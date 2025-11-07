@@ -33,8 +33,48 @@ class BlackjackGame extends BitByteCasinoGame {
         return total;
     }
 
-    private void printHand(String owner, java.util.List<String> hand) {
+    private String getCardAscii(String card) {
+        String rank = card.replaceAll("[^A0-9JQK]", "");
+        String suit = card.replaceAll("[^♠♥♦♣]", "");
+        return "┌─────┐\n" +
+               "│" + String.format("%-2s", rank) + "   │\n" +
+               "│  " + suit + "  │\n" +
+               "│   " + String.format("%2s", rank) + "│\n" +
+               "└─────┘";
+    }
+
+    private String getHiddenCardAscii() {
+        return "┌─────┐\n" +
+               "│░░░░░│\n" +
+               "│░░░░░│\n" +
+               "│░░░░░│\n" +
+               "└─────┘";
+    }
+
+    private void printHand(String owner, java.util.List<String> hand, boolean showHidden) {
         System.out.println(owner + " hand: " + String.join("  ", hand) + " (Total: " + calculateTotal(hand) + ")");
+
+        // Print ASCII art
+        String[] lines = new String[5];
+        for (int i = 0; i < 5; i++) lines[i] = "";
+
+        for (String card : hand) {
+            String ascii;
+            if (showHidden && card.equals(hand.get(0))) {
+                ascii = getHiddenCardAscii();
+            } else {
+                ascii = getCardAscii(card);
+            }
+            String[] cardLines = ascii.split("\n");
+            for (int i = 0; i < 5; i++) {
+                lines[i] += cardLines[i] + " ";
+            }
+        }
+
+        for (String line : lines) {
+            System.out.println(line);
+        }
+        System.out.println();
     }
 
     private String drawCard() {
@@ -59,8 +99,10 @@ class BlackjackGame extends BitByteCasinoGame {
         dealerHand.add(drawCard());
         dealerHand.add(drawCard());
 
+        clearScreen();
         System.out.println("\nDealer's hand: " + dealerHand.get(0) + " [Hidden]");
-        printHand("Your", playerHand);
+        printHand("Your", playerHand, false);
+        printHand("Dealer's", dealerHand, true);
 
         // Check for blackjack
         if (calculateTotal(playerHand) == 21) {
@@ -86,8 +128,9 @@ class BlackjackGame extends BitByteCasinoGame {
             int choice = sc.nextInt();
 
             if (choice == 1) { // Hit
+                clearScreen();
                 playerHand.add(drawCard());
-                printHand("Your", playerHand);
+                printHand("Your", playerHand, false);
                 if (calculateTotal(playerHand) > 21) {
                     System.out.println("💥 You bust!");
                     playerBust = true;
@@ -102,7 +145,8 @@ class BlackjackGame extends BitByteCasinoGame {
                 }
                 bet *= 2;
                 playerHand.add(drawCard());
-                printHand("Your", playerHand);
+                clearScreen();
+                printHand("Your", playerHand, false);
                 doubled = true;
                 if (calculateTotal(playerHand) > 21) {
                     System.out.println("💥 You bust!");
@@ -116,13 +160,14 @@ class BlackjackGame extends BitByteCasinoGame {
 
         // Dealer's turn
         if (!playerBust) {
+            clearScreen();
             System.out.println("\nDealer reveals their hand...");
-            printHand("Dealer's", dealerHand);
+            printHand("Dealer's", dealerHand, false);
 
             while (calculateTotal(dealerHand) < 17) {
                 System.out.println("Dealer hits...");
                 dealerHand.add(drawCard());
-                printHand("Dealer's", dealerHand);
+                printHand("Dealer's", dealerHand, false);
             }
 
             int playerTotal = calculateTotal(playerHand);
