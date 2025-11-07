@@ -15,7 +15,7 @@ class SlotMachineGame extends BitByteCasinoGame {
 
         System.out.println("\nSpinning...");
         try {
-            // 🎞️ Spin animation (with screen refresh)
+            //  Spin animation (with screen refresh)
             for (int i = 0; i < 12; i++) {
                 s1 = symbols[rand.nextInt(symbols.length)];
                 s2 = symbols[rand.nextInt(symbols.length)];
@@ -42,7 +42,7 @@ class SlotMachineGame extends BitByteCasinoGame {
             System.out.println("🎉 JACKPOT! You win PHP" + (bet * 5) + "!");
             balance += bet * 5;
         } else if (s1.equals(s2) || s2.equals(s3) || s1.equals(s3)) {
-            System.out.println("⭐ Nice! You win PHP" + (bet * 2) + "!");
+            System.out.println("Nice! You win PHP" + (bet * 2) + "!");
             balance += bet * 2;
         } else {
             System.out.println("You lose PHP" + bet + ".");
