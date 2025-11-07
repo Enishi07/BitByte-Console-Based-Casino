@@ -140,7 +140,7 @@ class ColorGame extends BitByteCasinoGame {
             }
         }
 
-        balance += totalWinnings;
+        balance += totalWinnings - totalBet;
 
         return balance;
     }
