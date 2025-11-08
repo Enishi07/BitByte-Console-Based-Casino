@@ -154,12 +154,13 @@ class ColorGame extends BitByteCasinoGame {
         int leftPad = (width - color.length()) / 2;
         int rightPad = width - color.length() - leftPad;
         String centered = " ".repeat(leftPad) + color + " ".repeat(rightPad);
-        System.out.println("     ___________     ");
+        System.out.println("       .-----------.    ");
+        System.out.println("     .`          .'     ");
         System.out.println("    |           |    ");
         System.out.println("    |           |    ");
         System.out.println("    |" + centered + "|    ");
-        System.out.println("    |           |    ");
-        System.out.println("    |___________|    ");
+        System.out.println("    |           |  .  ");
+        System.out.println("    |___________|.'    ");
     }
 
     // 🎨 Color boxes (3 boxes)
@@ -171,11 +172,12 @@ class ColorGame extends BitByteCasinoGame {
             int rightPad = width - colors[i].length() - leftPad;
             centered[i] = " ".repeat(leftPad) + colors[i] + " ".repeat(rightPad);
         }
-        System.out.println("     ___________      ___________      ___________     ");
-        System.out.println("    |           |    |           |    |           |    ");
-        System.out.println("    |           |    |           |    |           |    ");
-        System.out.println("    |" + centered[0] + "|    |" + centered[1] + "|    |" + centered[2] + "|    ");
-        System.out.println("    |           |    |           |    |           |    ");
-        System.out.println("    |___________|    |___________|    |___________|    ");
+        System.out.println("       .-----------.      .-----------.      .-----------. ");
+        System.out.println("     .`          .'|    .`          .'|    .`          .'|    ");
+        System.out.println("    |           |  |   |           |  |   |           |  | ");
+        System.out.println("    |           |  |   |           |  |   |           |  | ");
+        System.out.println("    |" + centered[0] + "|  |   |" + centered[1] + "|  |   |" + centered[2] + "|  |   |");
+        System.out.println("    |           |  .   |           |  .   |           |  .    ");
+        System.out.println("    |___________|.'    |___________|.'    |___________|.'    ");
     }
 }
