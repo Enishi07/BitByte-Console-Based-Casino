@@ -1,7 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
 
-// Base class for all games
 abstract class BitByteCasinoGame {
     protected Scanner sc = new Scanner(System.in);
     protected Random rand = new Random();
