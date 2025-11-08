@@ -178,7 +178,7 @@ class BlackjackGame extends BitByteCasinoGame {
             System.out.println("Dealer's total: " + dealerTotal);
 
             if (dealerTotal > 21) {
-                System.out.println("Dealer busts! You win ₱" + bet + "!");
+                System.out.println("Dealer busts! You win PHP" + bet + "!");
                 balance += bet;
             } else if (playerTotal > dealerTotal) {
                 System.out.println("You win PHP" + bet + "!");

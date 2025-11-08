@@ -35,35 +35,40 @@ public class BitByteCasino {
             System.out.println("----------------------------------------------------------------------------------------------");
             System.out.print("\t\t\tEnter your choice: ");
             choice = sc.nextInt();
+            System.out.println("");
 
             switch (choice) {
                 case 1 -> {
-                    System.out.println("Would you like to view the tutorial for Dice Roll? (y/n): ");
+                    System.out.print("Would you like to view the tutorial for Dice Roll? (y/n): ");
                     String viewTutorial = sc.next();
+                    System.out.println("");
                     if (viewTutorial.equalsIgnoreCase("y")) {
                         Tutorial.showDiceTutorial();
                     }
                     balance = dice.play(balance);
                 }
                 case 2 -> {
-                    System.out.println("Would you like to view the tutorial for Blackjack? (y/n): ");
+                    System.out.print("Would you like to view the tutorial for Blackjack? (y/n): ");
                     String viewTutorial = sc.next();
+                    System.out.println("");
                     if (viewTutorial.equalsIgnoreCase("y")) {
                         Tutorial.showBlackjackTutorial();
                     }
                     balance = blackjack.play(balance);
                 }
                 case 3 -> {
-                    System.out.println("Would you like to view the tutorial for Slot Machine? (y/n): ");
+                    System.out.print("Would you like to view the tutorial for Slot Machine? (y/n): ");
                     String viewTutorial = sc.next();
+                    System.out.println("");
                     if (viewTutorial.equalsIgnoreCase("y")) {
                         Tutorial.showSlotMachineTutorial();
                     }
                     balance = slots.play(balance);
                 }
                 case 4 -> {
-                    System.out.println("Would you like to view the tutorial for Color Game? (y/n): ");
+                    System.out.print("Would you like to view the tutorial for Color Game? (y/n): ");
                     String viewTutorial = sc.next();
+                    System.out.println("");
                     if (viewTutorial.equalsIgnoreCase("y")) {
                         Tutorial.showColorGameTutorial();
                     }
