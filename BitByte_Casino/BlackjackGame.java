@@ -94,6 +94,7 @@ class BlackjackGame extends BitByteCasinoGame {
         // Deal initial hands
         java.util.List<String> playerHand = new java.util.ArrayList<>();
         java.util.List<String> dealerHand = new java.util.ArrayList<>();
+        clearScreen();
 
         playerHand.add(drawCard());
         playerHand.add(drawCard());

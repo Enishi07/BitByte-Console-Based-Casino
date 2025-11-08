@@ -8,7 +8,7 @@ class SlotMachineGame extends BitByteCasinoGame {
             System.out.println("Not enough balance!");
             return balance;
         }
-        else if (bet <= 0 || bet > balance) {}
+        clearScreen();
 
         String[] symbols = {"^_^", "o_o", "O_O", ">:)", "T_T"};
         String s1 = "", s2 = "", s3 = "";

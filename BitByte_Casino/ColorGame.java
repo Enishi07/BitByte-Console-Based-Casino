@@ -3,6 +3,7 @@
 class ColorGame extends BitByteCasinoGame {
     @Override
     public double play(double balance) {
+        clearScreen();
         System.out.println("Choose betting mode:");
         System.out.println("1. Single Color Bet");
         System.out.println("2. Multiple Color Bet (Two Colors)");

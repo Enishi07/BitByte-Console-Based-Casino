@@ -3,6 +3,7 @@
 class DiceGame extends BitByteCasinoGame {
     @Override
     public double play(double balance) {
+        clearScreen();
         System.out.print("Enter your bet: PHP");
         
         double bet = sc.nextDouble();
