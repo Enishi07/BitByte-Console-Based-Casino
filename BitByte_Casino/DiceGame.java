@@ -1,4 +1,4 @@
-package games;
+
 
 class DiceGame extends BitByteCasinoGame {
     @Override

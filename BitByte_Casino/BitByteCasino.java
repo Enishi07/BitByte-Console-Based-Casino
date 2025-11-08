@@ -1,5 +1,5 @@
+import Tutorial.Tutorial;
 import java.util.Scanner;
-import games.*;
 
 // Main Casino Application (keeps only the public entry point here)
 public class BitByteCasino {
@@ -37,10 +37,38 @@ public class BitByteCasino {
             choice = sc.nextInt();
 
             switch (choice) {
-                case 1 -> balance = dice.play(balance);
-                case 2 -> balance = blackjack.play(balance);
-                case 3 -> balance = slots.play(balance);
-                case 4 -> balance = colorGame.play(balance);
+                case 1 -> {
+                    System.out.println("Would you like to view the tutorial for Dice Roll? (y/n): ");
+                    String viewTutorial = sc.next();
+                    if (viewTutorial.equalsIgnoreCase("y")) {
+                        Tutorial.showDiceTutorial();
+                    }
+                    balance = dice.play(balance);
+                }
+                case 2 -> {
+                    System.out.println("Would you like to view the tutorial for Blackjack? (y/n): ");
+                    String viewTutorial = sc.next();
+                    if (viewTutorial.equalsIgnoreCase("y")) {
+                        Tutorial.showBlackjackTutorial();
+                    }
+                    balance = blackjack.play(balance);
+                }
+                case 3 -> {
+                    System.out.println("Would you like to view the tutorial for Slot Machine? (y/n): ");
+                    String viewTutorial = sc.next();
+                    if (viewTutorial.equalsIgnoreCase("y")) {
+                        Tutorial.showSlotMachineTutorial();
+                    }
+                    balance = slots.play(balance);
+                }
+                case 4 -> {
+                    System.out.println("Would you like to view the tutorial for Color Game? (y/n): ");
+                    String viewTutorial = sc.next();
+                    if (viewTutorial.equalsIgnoreCase("y")) {
+                        Tutorial.showColorGameTutorial();
+                    }
+                    balance = colorGame.play(balance);
+                }
                 case 5 -> System.out.printf("Thanks for playing! Final balance: PHP%.2f" , balance);
                 default -> System.out.println("Invalid choice!");
             }

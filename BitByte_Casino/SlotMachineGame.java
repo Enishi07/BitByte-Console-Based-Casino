@@ -1,4 +1,4 @@
-package games;
+
 class SlotMachineGame extends BitByteCasinoGame {
     @Override
     public double play(double balance) {
