@@ -1,5 +1,7 @@
+package games;
 import java.util.Random;
 import java.util.Scanner;
+
 
 abstract class BitByteCasinoGame {
     protected Scanner sc = new Scanner(System.in);

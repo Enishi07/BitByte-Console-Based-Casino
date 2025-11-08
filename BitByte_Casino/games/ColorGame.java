@@ -1,3 +1,4 @@
+package games;
 // 🎨 Philippine Color Game
 class ColorGame extends BitByteCasinoGame {
     @Override

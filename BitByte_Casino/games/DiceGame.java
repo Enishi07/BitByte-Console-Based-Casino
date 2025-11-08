@@ -1,4 +1,5 @@
-// 🎲 Dice Roll Game
+package games;
+
 class DiceGame extends BitByteCasinoGame {
     @Override
     public double play(double balance) {
