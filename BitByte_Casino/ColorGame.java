@@ -174,7 +174,7 @@ class ColorGame extends BitByteCasinoGame {
         }
         System.out.println("       .-----------.      .-----------.      .-----------. ");
         System.out.println("     .`          .'|    .`          .'|    .`          .'|    ");
-        System.out.println("    |           |  |   |           |  |   |           |  | ");
+        System.out.println("    |```````````|  |   |```````````|  |   |```````````|  |");
         System.out.println("    |           |  |   |           |  |   |           |  | ");
         System.out.println("    |" + centered[0] + "|  |   |" + centered[1] + "|  |   |" + centered[2] + "|  |");
         System.out.println("    |           |  .   |           |  .   |           |  .    ");
