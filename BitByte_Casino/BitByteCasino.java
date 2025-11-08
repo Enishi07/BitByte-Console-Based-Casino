@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import casino_games.*;
 
 // Main Casino Application (keeps only the public entry point here)
 public class BitByteCasino {
