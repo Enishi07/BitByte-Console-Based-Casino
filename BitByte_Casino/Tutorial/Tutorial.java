@@ -66,4 +66,31 @@ public class Tutorial {
         System.out.println("\nPress Enter to continue...");
         sc.nextLine();
     }
+    
+    public static void showRouletteTutorial() {
+    System.out.println("\n=== Roulette Game Tutorial ===");
+    System.out.println("Rules:");
+    System.out.println("- You can bet on a COLOR or a NUMBER (0–36).");
+    System.out.println("- Colors are:");
+    System.out.println("  • Red  → numbers like 1, 3, 5, 7, 9...");
+    System.out.println("  • Black → numbers like 2, 4, 6, 8, 10...");
+    System.out.println("  • Green → 0 only.");
+    System.out.println();
+    System.out.println("Betting Options:");
+    System.out.println("- Bet on a number → Higher risk, higher reward.");
+    System.out.println("- Bet on a color → Safer, smaller reward.");
+    System.out.println();
+    System.out.println("Winning Mechanics:");
+    System.out.println("- If your number is drawn: You win 35x your bet!");
+    System.out.println("- If your color matches: You win 2x your bet!");
+    System.out.println("- Otherwise: You lose your bet.");
+    System.out.println();
+    System.out.println("Other Notes:");
+    System.out.println("- You can only bet within your current balance.");
+    System.out.println("- Type 'exit' anytime to leave the game.");
+    System.out.println("- Try your luck and manage your bets wisely!");
+    System.out.println("\nPress Enter to continue...");
+    sc.nextLine();
+}
+
 }

@@ -166,8 +166,8 @@ public class BitByteCasino {
                     
                 
                 case 6 -> {
-                    // System.out.print("Would you like to view the tutorial for Color Game? (y/n): ");
-                    // String viewTutorial = sc.next();
+                     System.out.print("Would you like to view the tutorial for Color Game? (y/n): ");
+                     String viewTutorial = sc.next();
                     System.out.println(" _______   __                      __              _______                       __             __      __ \r\n" + 
                         "|       \\ |  \\                    |  \\            |       \\                     |  \\           |  \\    |  \\\r\n" + 
                         "| $$$$$$$\\| $$  ______    _______ | $$   __       | $$$$$$$\\  ______   __    __ | $$  ______  _| $$_  _| $$_     ______\r\n" + 
@@ -179,10 +179,9 @@ public class BitByteCasino {
                         " \\$$$$$$$  \\$$  \\$$$$$$$  \\$$$$$$$ \\$$   \\$$       \\$$   \\$$  \\$$$$$$   \\$$$$$$  \\$$  \\$$$$$$$   \\$$$$   \\$$$$   \\$$$$$$$");
                     
                     System.out.println("");
-                    
-                    // if (viewTutorial.equalsIgnoreCase("y")) {
-                    //     Tutorial.showColorGameTutorial();
-                    // }
+                     if (viewTutorial.equalsIgnoreCase("y")) {
+                         Tutorial.showRouletteTutorial();
+                     }
                     balance = rouletteGame.play(balance);
                 }
 
