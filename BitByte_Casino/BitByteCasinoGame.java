@@ -7,7 +7,7 @@ abstract class BitByteCasinoGame {
     protected Random rand = new Random();
 
     // ✅ Universal clear screen method
-    protected void clearScreen() {
+    public void clearScreen() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();

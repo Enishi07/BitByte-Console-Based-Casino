@@ -1,6 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class BlackRedRouletteGame extends BitByteCasinoGame {
 
     // ANSI color and screen controls
@@ -273,4 +274,5 @@ public double play(double balance) {
     private static String formatNumber(int n) {
         return n < 10 ? " " + n : Integer.toString(n);
     }
+
 }
