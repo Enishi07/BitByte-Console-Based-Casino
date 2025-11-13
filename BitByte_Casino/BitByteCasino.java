@@ -35,19 +35,19 @@ public class BitByteCasino {
                         "######### ###########     ###     #########     ###        ###     ##########          ########  ###     ###  ######## ########### ###    ####  ########");
                         
         do {
-            System.out.println("==============================================================================================");
-            System.out.printf("\t\t\t\t\tBalance: PHP%.2f \n" ,balance);
-            System.out.println("==============================================================================================");
-            System.out.println("\t\t\t\t\tChoose a game:");
-            System.out.println("\t\t\t\t\t1.  Dice Roll");
-            System.out.println("\t\t\t\t\t2.  Blackjack");
-            System.out.println("\t\t\t\t\t3.  Slot Machine");
-            System.out.println("\t\t\t\t\t4.  Color Game");
-            System.out.println("\t\t\t\t\t5.  Crazy Time");
-            System.out.println("\t\t\t\t\t6.  Roulette");
-            System.out.println("\t\t\t\t\t7.  Exit");
-            System.out.println("----------------------------------------------------------------------------------------------");
-            System.out.print("\t\t\tEnter your choice: ");
+            System.out.println("==============================================================================================================================================================");
+            System.out.printf("\t\t\t\t\t\t\t\tBalance: PHP%.2f \n" ,balance);
+            System.out.println("==============================================================================================================================================================");
+            System.out.println("\t\t\t\t\t\t\t\tChoose a game:");
+            System.out.println("\t\t\t\t\t\t\t\t1.  Dice Roll");
+            System.out.println("\t\t\t\t\t\t\t\t2.  Blackjack");
+            System.out.println("\t\t\t\t\t\t\t\t3.  Slot Machine");
+            System.out.println("\t\t\t\t\t\t\t\t4.  Color Game");
+            System.out.println("\t\t\t\t\t\t\t\t5.  Crazy Time");
+            System.out.println("\t\t\t\t\t\t\t\t6.  Roulette");
+            System.out.println("\t\t\t\t\t\t\t\t7.  Exit");
+            System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------");
+            System.out.print("\t\t\t\t\t\tEnter your choice: ");
             choice = sc.nextInt();
             System.out.println("");
 
@@ -59,20 +59,23 @@ public class BitByteCasino {
                     if (viewTutorial.equalsIgnoreCase("y")) {
                         Tutorial.showDiceTutorial();
                     }
-                    System.out.println(" .----------------.  .----------------.  .----------------.  .----------------.\r\n" + 
-                        "| .--------------. || .--------------. || .--------------. || .--------------. |\r\n" + 
-                        "| |  ________    | || |     _____    | || |     ______   | || |  _________   | |\r\n" + 
-                        "| | |_   ___ `.  | || |    |_   _|   | || |   .' ___  |  | || | |_   ___  |  | |\r\n" + 
-                        "| |   | |   `. \\ | || |      | |     | || |  / .'   \\_|  | || |   | |_  \\_|  | |\r\n" + 
-                        "| |   | |    | | | || |      | |     | || |  | |         | || |   |  _|  _   | |\r\n" +
-                        "| |  _| |___.' / | || |     _| |_    | || |  \\ `.___.'\\  | || |  _| |___/ |  | |\r\n" +
-                        "| | |________.'  | || |    |_____|   | || |   `._____.'  | || | |_________|  | |\r\n" +
-                        "| |              | || |              | || |              | || |              | |\r\n" +
-                        "| '--------------' || '--------------' || '--------------' || '--------------' |\r\n" +
-                        " '----------------'  '----------------'  '----------------'  '----------------' ");
-                    System.out.println("1. Start playing Dice Roll");
-                    System.out.println("2. Exit to menu");
-                    System.out.print("Enter your choice: ");
+                    System.out.println("\t\t\t\t\t .----------------.  .----------------.  .----------------.  .----------------.\r\n" + 
+                        "\t\t\t\t\t| .--------------. || .--------------. || .--------------. || .--------------. |\r\n" + 
+                        "\t\t\t\t\t| |  ________    | || |     _____    | || |     ______   | || |  _________   | |\r\n" + 
+                        "\t\t\t\t\t| | |_   ___ `.  | || |    |_   _|   | || |   .' ___  |  | || | |_   ___  |  | |\r\n" + 
+                        "\t\t\t\t\t| |   | |   `. \\ | || |      | |     | || |  / .'   \\_|  | || |   | |_  \\_|  | |\r\n" + 
+                        "\t\t\t\t\t| |   | |    | | | || |      | |     | || |  | |         | || |   |  _|  _   | |\r\n" +
+                        "\t\t\t\t\t| |  _| |___.' / | || |     _| |_    | || |  \\ `.___.'\\  | || |  _| |___/ |  | |\r\n" +
+                        "\t\t\t\t\t| | |________.'  | || |    |_____|   | || |   `._____.'  | || | |_________|  | |\r\n" +
+                        "\t\t\t\t\t| |              | || |              | || |              | || |              | |\r\n" +
+                        "\t\t\t\t\t| '--------------' || '--------------' || '--------------' || '--------------' |\r\n" +
+                        "\t\t\t\t\t '----------------'  '----------------'  '----------------'  '----------------' ");
+                    System.out.println("==============================================================================================================================================================");
+                    System.out.printf("\t\t\t\t\t\t\t\tBalance: PHP%.2f \n" ,balance);
+                    System.out.println("==============================================================================================================================================================");
+                    System.out.println("\t\t\t\t\t\t\t\t1. Start playing Dice Roll");
+                    System.out.println("\t\t\t\t\t\t\t\t2. Exit to menu");
+                    System.out.print("\t\t\t\t\t\tEnter your choice: ");
                     int startChoice = sc.nextInt();
                     System.out.println("");
                     if (startChoice == 1) {
@@ -91,15 +94,18 @@ public class BitByteCasino {
                         Tutorial.showBlackjackTutorial();
                     }
 
-                    System.out.println(".------..------..------..------..------..------..------..------..------.\r\n" + 
-                        "|B.--. ||L.--. ||A.--. ||C.--. ||K.--. ||J.--. ||A.--. ||C.--. ||K.--. |\r\n" + 
-                        "| :(): || :/\\: || (\\/) || :/\\: || :/\\: || :(): || (\\/) || :/\\: || :/\\: |\r\n" + 
-                        "| ()() || (__) || :\\/: || :\\/: || :\\/: || ()() || :\\/: || :\\/: || :\\/: |\r\n" + 
-                        "| '--'B|| '--'L|| '--'A|| '--'C|| '--'K|| '--'J|| '--'A|| '--'C|| '--'K|\r\n" + 
-                        "`------'`------'`------'`------'`------'`------'`------'`------'`------'");
-                    System.out.println("1. Start playing Blackjack");
-                    System.out.println("2. Exit to menu");
-                    System.out.print("Enter your choice: ");
+                    System.out.println("\t\t\t\t\t.------..------..------..------..------..------..------..------..------.\r\n" + 
+                        "\t\t\t\t\t|B.--. ||L.--. ||A.--. ||C.--. ||K.--. ||J.--. ||A.--. ||C.--. ||K.--. |\r\n" + 
+                        "\t\t\t\t\t| :(): || :/\\: || (\\/) || :/\\: || :/\\: || :(): || (\\/) || :/\\: || :/\\: |\r\n" + 
+                        "\t\t\t\t\t| ()() || (__) || :\\/: || :\\/: || :\\/: || ()() || :\\/: || :\\/: || :\\/: |\r\n" + 
+                        "\t\t\t\t\t| '--'B|| '--'L|| '--'A|| '--'C|| '--'K|| '--'J|| '--'A|| '--'C|| '--'K|\r\n" + 
+                        "\t\t\t\t\t`------'`------'`------'`------'`------'`------'`------'`------'`------'");
+                    System.out.println("==============================================================================================================================================================");
+                    System.out.printf("\t\t\t\t\t\t\t\tBalance: PHP%.2f \n" ,balance);
+                    System.out.println("==============================================================================================================================================================");
+                    System.out.println("\t\t\t\t\t\t\t\t1. Start playing BlackJack");
+                    System.out.println("\t\t\t\t\t\t\t\t2. Exit to menu");
+                    System.out.print("\t\t\t\t\t\tEnter your choice: ");
                     int startChoice = sc.nextInt();
                     System.out.println("");
                     if (startChoice == 1) {
@@ -118,14 +124,17 @@ public class BitByteCasino {
                         Tutorial.showSlotMachineTutorial();
                     }
 
-                    System.out.println(" ______     __         ______     ______      __    __     ______     ______     __  __     __     __   __     ______\r\n" + 
-                        "/\\  ___\\   /\\ \\       /\\  __ \\   /\\__  _\\    /\\ \"-./  \\   /\\  __ \\   /\\  ___\\   /\\ \\_\\ \\   /\\ \\   /\\ \"-.\\ \\   /\\  ___\\ \r\n" + 
-                        "\\ \\___  \\  \\ \\ \\____  \\ \\ \\/\\ \\  \\/_/\\ \\/    \\ \\ \\-./\\ \\  \\ \\  __ \\  \\ \\ \\____  \\ \\  __ \\  \\ \\ \\  \\ \\ \\-.  \\  \\ \\  __\\ \r\n" + 
-                        " \\/\\_____\\  \\ \\_____\\  \\ \\_____\\    \\ \\_\\     \\ \\_\\ \\ \\_\\  \\ \\_\\ \\_\\  \\ \\_____\\  \\ \\_\\ \\_\\  \\ \\_\\  \\ \\_\\\\\"\\_\\  \\ \\_____\\\r\n" + 
-                        "  \\/_____/   \\/_____/   \\/_____/     \\/_/      \\/_/  \\/_/   \\/_/\\/_/   \\/_____/   \\/_/\\/_/   \\/_/   \\/_/ \\/_/   \\/_____/ ");
-                    System.out.println("1. Start playing Slot Machine");
-                    System.out.println("2. Exit to menu");
-                    System.out.print("Enter your choice: ");
+                    System.out.println("\t\t ______     __         ______     ______      __    __     ______     ______     __  __     __     __   __     ______\r\n" + 
+                        "\t\t/\\  ___\\   /\\ \\       /\\  __ \\   /\\__  _\\    /\\ \"-./  \\   /\\  __ \\   /\\  ___\\   /\\ \\_\\ \\   /\\ \\   /\\ \"-.\\ \\   /\\  ___\\ \r\n" + 
+                        "\t\t\\ \\___  \\  \\ \\ \\____  \\ \\ \\/\\ \\  \\/_/\\ \\/    \\ \\ \\-./\\ \\  \\ \\  __ \\  \\ \\ \\____  \\ \\  __ \\  \\ \\ \\  \\ \\ \\-.  \\  \\ \\  __\\ \r\n" + 
+                        "\t\t \\/\\_____\\  \\ \\_____\\  \\ \\_____\\    \\ \\_\\     \\ \\_\\ \\ \\_\\  \\ \\_\\ \\_\\  \\ \\_____\\  \\ \\_\\ \\_\\  \\ \\_\\  \\ \\_\\\\\"\\_\\  \\ \\_____\\\r\n" + 
+                        "\t\t  \\/_____/   \\/_____/   \\/_____/     \\/_/      \\/_/  \\/_/   \\/_/\\/_/   \\/_____/   \\/_/\\/_/   \\/_/   \\/_/ \\/_/   \\/_____/ ");
+                    System.out.println("==============================================================================================================================================================");
+                    System.out.printf("\t\t\t\t\t\t\t\tBalance: PHP%.2f \n" ,balance);
+                    System.out.println("==============================================================================================================================================================");
+                    System.out.println("\t\t\t\t\t\t\t\t1. Start playing Slot Machine");
+                    System.out.println("\t\t\t\t\t\t\t\t2. Exit to menu");
+                    System.out.print("\t\t\t\t\t\tEnter your choice: ");
                     int startChoice = sc.nextInt();
                     System.out.println("");
                     if (startChoice == 1) {
@@ -137,44 +146,101 @@ public class BitByteCasino {
                     }
                 }
                 case 4 -> {
-                    System.out.print("Would you like to view the tutorial for Color Game? (y/n): ");
-                    String viewTutorial = sc.next();
+                    System.out.println("\t\t\t\t a88888b.          dP                       .88888.                       88888888b\r\n" + 
+                        "\t\t\t\td8'   `88          88                      d8'   `88                      88\r\n" + 
+                        "\t\t\t\t88        .d8888b. 88 .d8888b. 88d888b.    88        .d8888b. 88d8b.d8b. a88aaaa\r\n" + 
+                        "\t\t\t\t88        88'  `88 88 88'  `88 88'  `88    88   YP88 88'  `88 88'`88'`88  88\r\n" + 
+                        "\t\t\t\tY8.   .88 88.  .88 88 88.  .88 88          Y8.   .88 88.  .88 88  88  88  88\r\n" + 
+                        "\t\t\t\t Y88888P' `88888P' dP `88888P' dP           `88888'  `88888P8 dP  dP  dP  88888888P\r\n" + 
+                        "\t\t\t\toooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+                    System.out.println("==============================================================================================================================================================");
+                    System.out.printf("\t\t\t\t\t\t\t\tBalance: PHP%.2f \n" ,balance);
+                    System.out.println("==============================================================================================================================================================");
+                    System.out.println("\t\t\t\t\t\t\t\t1. Start playing Slot Machine");
+                    System.out.println("\t\t\t\t\t\t\t\t2. Exit to menu");
+                    System.out.print("\t\t\t\t\t\tEnter your choice: ");
+                    int startChoice = sc.nextInt();
                     System.out.println("");
-                    if (viewTutorial.equalsIgnoreCase("y")) {
-                        Tutorial.showColorGameTutorial();
+                    if (startChoice == 1) {
+                        balance = colorGame.play(balance);
+                    } else if (startChoice == 2) {
+                        // Exit to menu, do nothing
+                    } else {
+                        System.out.println("Invalid choice! Returning to menu.");
                     }
-                    balance = colorGame.play(balance);
+                    
                 }
 
                 case 5 -> {
-                    // System.out.print("Would you like to view the tutorial for Color Game? (y/n): ");
-                    // String viewTutorial = sc.next();
-                    System.out.println("                                                          d8,\r\n" + 
-                        "                                                   d8P   `8P\r\n" + 
-                        "                                                d888888P\r\n" + 
-                        " d8888b  88bd88b d888b8b  d88888P ?88   d8P       ?88'    88b  88bd8b,d88b  d8888b\r\n" + 
-                        "d8P' `P  88P'  `d8P' ?88     d8P' d88   88        88P     88P  88P'`?8P'?8bd8b_,dP\r\n" + 
-                        "88b     d88     88b  ,88b  d8P'   ?8(  d88        88b    d88  d88  d88  88P88b\r\n" + 
-                        "`?888P'd88'     `?88P'`88bd88888P'`?88P'?8b       `?8b  d88' d88' d88'  88b`?888P'\r\n" + 
-                        "                                         )88\r\n" + 
-                        "                                        ,d8P\r\n" + 
-                        "                                     `?888P'");
-                    
-                    System.out.println("Comming Soon!");
-                    // if (viewTutorial.equalsIgnoreCase("y")) {
-                    //     Tutorial.showColorGameTutorial();
+                    System.out.print("Would you like to view the tutorial for Crazy Time? (y/n): ");
+                    String viewTutorial = sc.next();
+                    System.out.println("");
+                    if (viewTutorial.equalsIgnoreCase("y")) {
+                        Tutorial.showCrazyTimeTutorial();
                     }
+                    System.out.println("\t\t\t\t                                                          d8,\r\n" +
+                        "\t\t\t\t                                                   d8P   `8P\r\n" +
+                        "\t\t\t\t                                                d888888P\r\n" +
+                        "\t\t\t\t d8888b  88bd88b d888b8b  d88888P ?88   d8P       ?88'    88b  88bd8b,d88b  d8888b\r\n" +
+                        "\t\t\t\td8P' `P  88P'  `d8P' ?88     d8P' d88   88        88P     88P  88P'`?8P'?8bd8b_,dP\r\n" +
+                        "\t\t\t\t88b     d88     88b  ,88b  d8P'   ?8(  d88        88b    d88  d88  d88  88P88b\r\n" +
+                        "\t\t\t\t`?888P'd88'     `?88P'`88bd88888P'`?88P'?8b       `?8b  d88' d88' d88'  88b`?888P'\r\n" +
+                        "\t\t\t\t                                         )88\r\n" +
+                        "\t\t\t\t                                        ,d8P\r\n" +
+                        "\t\t\t\t                                     `?888P'");
+                    System.out.println("==============================================================================================================================================================");
+                    System.out.printf("\t\t\t\t\t\t\t\tBalance: PHP%.2f \n" ,balance);
+                    System.out.println("==============================================================================================================================================================");
+                    System.out.println("\t\t\t\t\t\t\t\t1. Start playing Crazy Time");
+                    System.out.println("\t\t\t\t\t\t\t\t2. Exit to menu");
+                    System.out.print("\t\t\t\t\t\tEnter your choice: ");
+                    int startChoice = sc.nextInt();
+                    System.out.println("");
+                    if (startChoice == 1) {
+                        balance = crazyTime.play(balance);
+                    } else if (startChoice == 2) {
+                        // Exit to menu, do nothing
+                    } else {
+                        System.out.println("Invalid choice! Returning to menu.");
+                    }
+                }
                     
                 
                 case 6 -> {
-                     System.out.print("Would you like to view the tutorial for Color Game? (y/n): ");
+                     System.out.print("Would you like to view the tutorial for Black Roulette? (y/n): ");
                      String viewTutorial = sc.next();
                     
                     System.out.println("");
                      if (viewTutorial.equalsIgnoreCase("y")) {
                          Tutorial.showRouletteTutorial();
                      }
-                    balance = rouletteGame.play(balance);
+
+                    System.out.println("\t\t\t _______   __                      __              _______                       __             __      __ \r\n" + 
+                        "\t\t\t|       \\ |  \\                    |  \\            |       \\                     |  \\           |  \\    |  \\\r\n" + 
+                        "\t\t\t| $$$$$$$\\| $$  ______    _______ | $$   __       | $$$$$$$\\  ______   __    __ | $$  ______  _| $$_  _| $$_     ______\r\n" + 
+                        "\t\t\t| $$__/ $$| $$ |      \\  /       \\| $$  /  \\      | $$__| $$ /      \\ |  \\  |  \\| $$ /      \\|   $$ \\|   $$ \\   /      \\\r\n" + 
+                        "\t\t\t| $$    $$| $$  \\$$$$$$\\|  $$$$$$$| $$_/  $$      | $$    $$|  $$$$$$\\| $$  | $$| $$|  $$$$$$\\\\$$$$$$ \\$$$$$$  |  $$$$$$\\\r\n" + 
+                        "\t\t\t| $$$$$$$\\| $$ /      $$| $$      | $$   $$       | $$$$$$$\\| $$  | $$| $$  | $$| $$| $$    $$ | $$ __ | $$ __ | $$    $$\r\n" + 
+                        "\t\t\t| $$__/ $$| $$|  $$$$$$$| $$_____ | $$$$$$\\       | $$  | $$| $$__/ $$| $$__/ $$| $$| $$$$$$$$ | $$|  \\| $$|  \\| $$$$$$$$\r\n" + 
+                        "\t\t\t| $$    $$| $$ \\$$    $$ \\$$     \\| $$  \\$$\\      | $$  | $$ \\$$    $$ \\$$    $$| $$ \\$$     \\  \\$$  $$ \\$$  $$ \\$$     \\\r\n" + 
+                        "\t\t\t \\$$$$$$$  \\$$  \\$$$$$$$  \\$$$$$$$ \\$$   \\$$       \\$$   \\$$  \\$$$$$$   \\$$$$$$  \\$$  \\$$$$$$$   \\$$$$   \\$$$$   \\$$$$$$$");
+                    
+                    System.out.println("==============================================================================================================================================================");
+                    System.out.printf("\t\t\t\t\t\t\t\tBalance: PHP%.2f \n" ,balance);
+                    System.out.println("==============================================================================================================================================================");
+                    System.out.println("\t\t\t\t\t\t\t\t1. Start playing Black Roulette");
+                    System.out.println("\t\t\t\t\t\t\t\t2. Exit to menu");
+                    System.out.print("\t\t\t\t\t\tEnter your choice: ");
+                    int startChoice = sc.nextInt();
+                    System.out.println("");
+                    if (startChoice == 1) {
+                        balance = rouletteGame.play(balance);
+                    } else if (startChoice == 2) {
+                        // Exit to menu, do nothing
+                    } else {
+                        System.out.println("Invalid choice! Returning to menu.");
+                    }
+                    
                 }
 
                 case 7 -> System.out.printf("Thanks for playing! Final balance: PHP%.2f" , balance);

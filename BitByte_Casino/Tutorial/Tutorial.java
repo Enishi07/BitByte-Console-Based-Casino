@@ -66,7 +66,28 @@ public class Tutorial {
         System.out.println("\nPress Enter to continue...");
         sc.nextLine();
     }
-    
+
+    public static void showCrazyTimeTutorial() {
+        System.out.println("\n=== Crazy Time Tutorial ===");
+        System.out.println("Objective: Bet on a segment and hope the wheel lands on it!");
+        System.out.println("Rules:");
+        System.out.println("- The wheel has 54 segments with different multipliers and bonuses.");
+        System.out.println("- Segments:");
+        System.out.println("  - Numbers: 1, 2, 5, 10 (multipliers for your bet)");
+        System.out.println("  - Bonuses: CoinFlip, CashHunt, Pachinko, CrazyTime (big payouts!)");
+        System.out.println("- Top Slot: Shows a random segment and multiplier (1-10).");
+        System.out.println("  - If the wheel lands on the same segment as Top Slot,");
+        System.out.println("    your payout is multiplied by the Top Slot multiplier!");
+        System.out.println("- Winning:");
+        System.out.println("  - Match a number: Win bet x segment value.");
+        System.out.println("  - Match a bonus: Win bet x 10 x random multiplier (2-100).");
+        System.out.println("  - Plus Top Slot multiplier if applicable.");
+        System.out.println("- Bet amount must not exceed your balance.");
+        System.out.println("- Watch the animated wheel spin and good luck!");
+        System.out.println("\nPress Enter to continue...");
+        sc.nextLine();
+    }
+
     public static void showRouletteTutorial() {
     System.out.println("\n=== Roulette Game Tutorial ===");
     System.out.println("Rules:");
