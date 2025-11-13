@@ -12,6 +12,7 @@ public class Tutorial {
         System.out.println("- If the dealer's roll is higher, you lose your bet.");
         System.out.println("- If it's a tie, no one wins or loses.");
         System.out.println("- Bet amount must not exceed your balance.");
+        System.out.println("- Good luck!");
         System.out.println("\nPress Enter to continue...");
         sc.nextLine();
     }
@@ -30,6 +31,7 @@ public class Tutorial {
         System.out.println("- Blackjack (21 with 2 cards) pays 1.5x bet.");
         System.out.println("- Bust (over 21) loses the bet.");
         System.out.println("- Bet amount must not exceed your balance.");
+        System.out.println("- Good luck!");
         System.out.println("\nPress Enter to continue...");
         sc.nextLine();
     }
@@ -43,6 +45,7 @@ public class Tutorial {
         System.out.println("- 2 matching symbols: Win 2x bet.");
         System.out.println("- No matches: Lose the bet.");
         System.out.println("- Bet amount must not exceed your balance.");
+        System.out.println("- Good luck!");
         System.out.println("\nPress Enter to continue...");
         sc.nextLine();
     }
@@ -59,6 +62,7 @@ public class Tutorial {
         System.out.println("  - If it appears 3 times: Win 4x bet.");
         System.out.println("  - If it doesn't appear: You lose your bet.");
         System.out.println("- Total bet must not exceed your balance.");
+        System.out.println("- Good luck!");
         System.out.println("\nPress Enter to continue...");
         sc.nextLine();
     }
