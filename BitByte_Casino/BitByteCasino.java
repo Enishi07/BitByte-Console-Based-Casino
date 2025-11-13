@@ -12,17 +12,22 @@ public class BitByteCasino {
         BlackjackGame blackjack = new BlackjackGame();
         SlotMachineGame slots = new SlotMachineGame();
         ColorGame colorGame = new ColorGame();
-        System.out.println(" /$$$$$$$  /$$   /$$     /$$$$$$$              /$$                      /$$$$$$                      /$$\r\n" + 
-                        "| $$__  $$|__/  | $$    | $$__  $$            | $$                     /$$__  $$                    |__/\r\n" + 
-                        "| $$  \\ $$ /$$ /$$$$$$  | $$  \\ $$ /$$   /$$ /$$$$$$    /$$$$$$       | $$  \\__/  /$$$$$$   /$$$$$$$ /$$ /$$$$$$$   /$$$$$$\\ \r\n" + 
-                        "| $$$$$$$ | $$|_  $$_/  | $$$$$$$ | $$  | $$|_  $$_/   /$$__  $$      | $$       |____  $$ /$$_____/| $$| $$__  $$ /$$__  $$\r\n" + 
-                        "| $$__  $$| $$  | $$    | $$__  $$| $$  | $$  | $$    | $$$$$$$$      | $$        /$$$$$$$|  $$$$$$ | $$| $$  \\ $$| $$  \\ $$\r\n" + 
-                        "| $$  \\ $$| $$  | $$ /$$| $$  \\ $$| $$  | $$  | $$ /$$| $$_____/      | $$    $$ /$$__  $$ \\____  $$| $$| $$  | $$| $$  | $$\r\n" +
-                        "| $$$$$$$/| $$  |  $$$$/| $$$$$$$/|  $$$$$$$  |  $$$$/|  $$$$$$$      |  $$$$$$/|  $$$$$$$ /$$$$$$$/| $$| $$  | $$|  $$$$$$/\r\n" +
-                        "|_______/ |__/   \\___/  |_______/  \\____  $$   \\___/   \\_______/       \\______/  \\_______/|_______/ |__/|__/  |__/ \\______/\r\n" +
-                        "                                   /$$  | $$                                                        \r\n" +
-                        "                                  |  $$$$$$/                                                        \r\n" +
-                        "                                   \\______/                                                         ");
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (Exception e) {
+            // Fallback (just print blank lines)
+            for (int i = 0; i < 50; i++) System.out.println();
+        }
+        System.out.println("██████  ██ ████████ ██████  ██    ██ ████████ ███████      ██████  █████  ███████ ██ ███    ██  ██████ \r\n" + 
+                        "██   ██ ██    ██    ██   ██  ██  ██     ██    ██          ██      ██   ██ ██      ██ ████   ██ ██    ██ \r\n" + 
+                        "██████  ██    ██    ██████    ████      ██    █████       ██      ███████ ███████ ██ ██ ██  ██ ██    ██ \r\n" + 
+                        "██   ██ ██    ██    ██   ██    ██       ██    ██          ██      ██   ██      ██ ██ ██  ██ ██ ██    ██ \r\n" + 
+                        "██████  ██    ██    ██████     ██       ██    ███████      ██████ ██   ██ ███████ ██ ██   ████  ██████  ");
         
         do {
             System.out.println("==============================================================================================");
@@ -47,7 +52,29 @@ public class BitByteCasino {
                     if (viewTutorial.equalsIgnoreCase("y")) {
                         Tutorial.showDiceTutorial();
                     }
-                    balance = dice.play(balance);
+                    System.out.println(" .----------------.  .----------------.  .----------------.  .----------------.\r\n" + 
+                        "| .--------------. || .--------------. || .--------------. || .--------------. |\r\n" + 
+                        "| |  ________    | || |     _____    | || |     ______   | || |  _________   | |\r\n" + 
+                        "| | |_   ___ `.  | || |    |_   _|   | || |   .' ___  |  | || | |_   ___  |  | |\r\n" + 
+                        "| |   | |   `. \\ | || |      | |     | || |  / .'   \\_|  | || |   | |_  \\_|  | |\r\n" + 
+                        "| |   | |    | | | || |      | |     | || |  | |         | || |   |  _|  _   | |\r\n" +
+                        "| |  _| |___.' / | || |     _| |_    | || |  \\ `.___.'\\  | || |  _| |___/ |  | |\r\n" +
+                        "| | |________.'  | || |    |_____|   | || |   `._____.'  | || | |_________|  | |\r\n" +
+                        "| |              | || |              | || |              | || |              | |\r\n" +
+                        "| '--------------' || '--------------' || '--------------' || '--------------' |\r\n" +
+                        " '----------------'  '----------------'  '----------------'  '----------------' ");
+                    System.out.println("1. Start playing Dice Roll");
+                    System.out.println("2. Exit to menu");
+                    System.out.print("Enter your choice: ");
+                    int startChoice = sc.nextInt();
+                    System.out.println("");
+                    if (startChoice == 1) {
+                        balance = dice.play(balance);
+                    } else if (startChoice == 2) {
+                        // Exit to menu, do nothing
+                    } else {
+                        System.out.println("Invalid choice! Returning to menu.");
+                    }
                 }
                 case 2 -> {
                     System.out.print("Would you like to view the tutorial for Blackjack? (y/n): ");
@@ -56,7 +83,25 @@ public class BitByteCasino {
                     if (viewTutorial.equalsIgnoreCase("y")) {
                         Tutorial.showBlackjackTutorial();
                     }
-                    balance = blackjack.play(balance);
+
+                    System.out.println(".------..------..------..------..------..------..------..------..------.\r\n" + 
+                        "|B.--. ||L.--. ||A.--. ||C.--. ||K.--. ||J.--. ||A.--. ||C.--. ||K.--. |\r\n" + 
+                        "| :(): || :/\\: || (\\/) || :/\\: || :/\\: || :(): || (\\/) || :/\\: || :/\\: |\r\n" + 
+                        "| ()() || (__) || :\\/: || :\\/: || :\\/: || ()() || :\\/: || :\\/: || :\\/: |\r\n" + 
+                        "| '--'B|| '--'L|| '--'A|| '--'C|| '--'K|| '--'J|| '--'A|| '--'C|| '--'K|\r\n" + 
+                        "`------'`------'`------'`------'`------'`------'`------'`------'`------'");
+                    System.out.println("1. Start playing Blackjack");
+                    System.out.println("2. Exit to menu");
+                    System.out.print("Enter your choice: ");
+                    int startChoice = sc.nextInt();
+                    System.out.println("");
+                    if (startChoice == 1) {
+                        balance = blackjack.play(balance);
+                    } else if (startChoice == 2) {
+                        // Exit to menu, do nothing
+                    } else {
+                        System.out.println("Invalid choice! Returning to menu.");
+                    }
                 }
                 case 3 -> {
                     System.out.print("Would you like to view the tutorial for Slot Machine? (y/n): ");
@@ -65,7 +110,24 @@ public class BitByteCasino {
                     if (viewTutorial.equalsIgnoreCase("y")) {
                         Tutorial.showSlotMachineTutorial();
                     }
-                    balance = slots.play(balance);
+
+                    System.out.println(" ______     __         ______     ______      __    __     ______     ______     __  __     __     __   __     ______\r\n" + 
+                        "/\\  ___\\   /\\ \\       /\\  __ \\   /\\__  _\\    /\\ \"-./  \\   /\\  __ \\   /\\  ___\\   /\\ \\_\\ \\   /\\ \\   /\\ \"-.\\ \\   /\\  ___\\ \r\n" + 
+                        "\\ \\___  \\  \\ \\ \\____  \\ \\ \\/\\ \\  \\/_/\\ \\/    \\ \\ \\-./\\ \\  \\ \\  __ \\  \\ \\ \\____  \\ \\  __ \\  \\ \\ \\  \\ \\ \\-.  \\  \\ \\  __\\ \r\n" + 
+                        " \\/\\_____\\  \\ \\_____\\  \\ \\_____\\    \\ \\_\\     \\ \\_\\ \\ \\_\\  \\ \\_\\ \\_\\  \\ \\_____\\  \\ \\_\\ \\_\\  \\ \\_\\  \\ \\_\\\\\"\\_\\  \\ \\_____\\\r\n" + 
+                        "  \\/_____/   \\/_____/   \\/_____/     \\/_/      \\/_/  \\/_/   \\/_/\\/_/   \\/_____/   \\/_/\\/_/   \\/_/   \\/_/ \\/_/   \\/_____/ ");
+                    System.out.println("1. Start playing Slot Machine");
+                    System.out.println("2. Exit to menu");
+                    System.out.print("Enter your choice: ");
+                    int startChoice = sc.nextInt();
+                    System.out.println("");
+                    if (startChoice == 1) {
+                        balance = slots.play(balance);
+                    } else if (startChoice == 2) {
+                        // Exit to menu, do nothing
+                    } else {
+                        System.out.println("Invalid choice! Returning to menu.");
+                    }
                 }
                 case 4 -> {
                     System.out.print("Would you like to view the tutorial for Color Game? (y/n): ");
@@ -74,7 +136,32 @@ public class BitByteCasino {
                     if (viewTutorial.equalsIgnoreCase("y")) {
                         Tutorial.showColorGameTutorial();
                     }
-                    balance = colorGame.play(balance);
+
+                    System.out.println("      _____           _____     ____                _____         _____         _____           ____        ______  _______        ______  \r\n" + 
+                        "  ___|\\    \\     ____|\\    \\   |    |          ____|\\    \\    ___|\\    \\    ___|\\    \\     ____|\\   \\      |      \\/       \\   ___|\\     \\ \r\n" + 
+                        " /    /\\    \\   /     /\\    \\  |    |         /     /\\    \\  |    |\\    \\  /    /\\    \\   /    /\\    \\    /          /\\     \\ |     \\     \\ \r\n" + 
+                        "|    |  |    | /     /  \\    \\ |    |        /     /  \\    \\ |    | |    ||    |  |____| |    |  |    |  /     /\\   / /\\     ||     ,_____/|\r\n" + 
+                        "|    |  |____||     |    |    ||    |  ____ |     |    |    ||    |/____/ |    |    ____ |    |__|    | /     /\\ \\_/ / /    /||     \\--'\\_|/\r\n" + 
+                        "|    |   ____ |     |    |    ||    | |    ||     |    |    ||    |\\    \\ |    |   |    ||    .--.    ||     |  \\|_|/ /    / ||     /___/|\r\n" + 
+                        "|    |  |    ||\\     \\  /    /||    | |    ||\\     \\  /    /||    | |    ||    |   |_,  ||    |  |    ||     |       |    |  ||     \\____|\\\r\n" + 
+                        "|\\ ___\\/    /|| \\_____\\/____/ ||____|/____/|| \\_____\\/____/ ||____| |____||\\ ___\\___/  /||____|  |____||\\____\\       |____|  /|____ '     /|\r\n" + 
+                        "| |   /____/ | \\ |    ||    | /|    |     || \\ |    ||    | /|    | |    || |   /____ / ||    |  |    || |    |      |    | / |    /_____/ |\r\n" +
+                        " \\|___|    | /  \\|____||____|/ |____|_____|/  \\|____||____|/ |____| |____| \\|___|    | / |____|  |____| \\|____|      |____|/  |____|     | /\r\n" +
+                        "   \\( |____|/      \\(    )/      \\(    )/        \\(    )/      \\(     )/     \\( |____|/    \\(      )/      \\(          )/       \\( |_____|/ \r\n" +
+                        "   '   )/          '    '        '    '          '    '        '     '       '   )/        '      '        '          '         '    )/ \r\n" +
+                        "        '                                                                         '                                                   '");
+                    System.out.println("1. Start playing Color Game");
+                    System.out.println("2. Exit to menu");
+                    System.out.print("Enter your choice: ");
+                    int startChoice = sc.nextInt();
+                    System.out.println("");
+                    if (startChoice == 1) {
+                        balance = colorGame.play(balance);
+                    } else if (startChoice == 2) {
+                        // Exit to menu, do nothing
+                    } else {
+                        System.out.println("Invalid choice! Returning to menu.");
+                    }
                 }
                 case 5 -> System.out.printf("Thanks for playing! Final balance: PHP%.2f" , balance);
                 default -> System.out.println("Invalid choice!");
