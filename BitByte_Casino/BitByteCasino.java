@@ -176,7 +176,7 @@ public class BitByteCasino {
                     System.out.println("==============================================================================================================================================================");
                     System.out.printf("\t\t\t\t\t\t\t\tBalance: PHP%.2f \n" ,balance);
                     System.out.println("==============================================================================================================================================================");
-                    System.out.println("\t\t\t\t\t\t\t\t1. Start playing Slot Machine");
+                    System.out.println("\t\t\t\t\t\t\t\t1. Start playing Color Game");
                     System.out.println("\t\t\t\t\t\t\t\t2. Exit to menu");
                     System.out.print("\t\t\t\t\t\tEnter your choice: ");
                     int startChoice = sc.nextInt();
