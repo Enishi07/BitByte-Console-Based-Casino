@@ -3,18 +3,7 @@ import java.util.Scanner;
 
 // Main Casino Application (keeps only the public entry point here)
 public class BitByteCasino {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        double balance = 1000.0;
-        int choice;
-
-        DiceGame dice = new DiceGame();
-        BlackjackGame blackjack = new BlackjackGame();
-        SlotMachineGame slots = new SlotMachineGame();
-        ColorGame colorGame = new ColorGame();
-        CrazyTimeGame crazyTime = new CrazyTimeGame();
-        BlackRedRouletteGame rouletteGame = new BlackRedRouletteGame();
-
+    public static void clearScreen() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
@@ -26,6 +15,23 @@ public class BitByteCasino {
             // Fallback (just print blank lines)
             for (int i = 0; i < 50; i++) System.out.println();
         }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double balance = 1000.0;
+        int choice;
+
+        DiceGame dice = new DiceGame();
+        BlackjackGame blackjack = new BlackjackGame();
+        SlotMachineGame slots = new SlotMachineGame();
+        ColorGame colorGame = new ColorGame();
+        CrazyTimeGame crazyTime = new CrazyTimeGame();
+        BlackRedRouletteGame rouletteGame = new BlackRedRouletteGame();
+        
+
+        
+
+        clearScreen();
         System.out.println("      ::::::::: ::::::::::: ::::::::::: :::::::::  :::   ::: ::::::::::: ::::::::::          ::::::::      :::      :::::::: ::::::::::: ::::    :::  ::::::::\r\n" + 
                         "     :+:    :+:    :+:         :+:     :+:    :+: :+:   :+:     :+:     :+:                :+:    :+:   :+: :+:   :+:    :+:    :+:     :+:+:   :+: :+:    :+: \r\n" + 
                         "    +:+    +:+    +:+         +:+     +:+    +:+  +:+ +:+      +:+     +:+                +:+         +:+   +:+  +:+           +:+     :+:+:+  +:+ +:+    +:+\r\n" + 
@@ -52,12 +58,14 @@ public class BitByteCasino {
 
             switch (choice) {
                 case 1 -> {
+                    clearScreen();
                     System.out.print("Would you like to view the tutorial for Dice Roll? (y/n): ");
                     String viewTutorial = sc.next();
                     System.out.println("");
                     if (viewTutorial.equalsIgnoreCase("y")) {
                         Tutorial.showDiceTutorial();
                     }
+                    clearScreen();
                     System.out.println("\t\t\t\t\t .----------------.  .----------------.  .----------------.  .----------------.\r\n" + 
                         "\t\t\t\t\t| .--------------. || .--------------. || .--------------. || .--------------. |\r\n" + 
                         "\t\t\t\t\t| |  ________    | || |     _____    | || |     ______   | || |  _________   | |\r\n" + 
@@ -86,6 +94,7 @@ public class BitByteCasino {
                     }
                 }
                 case 2 -> {
+                    clearScreen();
                     System.out.print("Would you like to view the tutorial for Blackjack? (y/n): ");
                     String viewTutorial = sc.next();
                     System.out.println("");
@@ -93,6 +102,7 @@ public class BitByteCasino {
                         Tutorial.showBlackjackTutorial();
                     }
 
+                    clearScreen();
                     System.out.println("\t\t\t\t\t.------..------..------..------..------..------..------..------..------.\r\n" + 
                         "\t\t\t\t\t|B.--. ||L.--. ||A.--. ||C.--. ||K.--. ||J.--. ||A.--. ||C.--. ||K.--. |\r\n" + 
                         "\t\t\t\t\t| :(): || :/\\: || (\\/) || :/\\: || :/\\: || :(): || (\\/) || :/\\: || :/\\: |\r\n" + 
@@ -116,6 +126,7 @@ public class BitByteCasino {
                     }
                 }
                 case 3 -> {
+                    clearScreen();
                     System.out.print("Would you like to view the tutorial for Slot Machine? (y/n): ");
                     String viewTutorial = sc.next();
                     System.out.println("");
@@ -123,6 +134,7 @@ public class BitByteCasino {
                         Tutorial.showSlotMachineTutorial();
                     }
 
+                    clearScreen();
                     System.out.println("\t\t ______     __         ______     ______      __    __     ______     ______     __  __     __     __   __     ______\r\n" + 
                         "\t\t/\\  ___\\   /\\ \\       /\\  __ \\   /\\__  _\\    /\\ \"-./  \\   /\\  __ \\   /\\  ___\\   /\\ \\_\\ \\   /\\ \\   /\\ \"-.\\ \\   /\\  ___\\ \r\n" + 
                         "\t\t\\ \\___  \\  \\ \\ \\____  \\ \\ \\/\\ \\  \\/_/\\ \\/    \\ \\ \\-./\\ \\  \\ \\  __ \\  \\ \\ \\____  \\ \\  __ \\  \\ \\ \\  \\ \\ \\-.  \\  \\ \\  __\\ \r\n" + 
@@ -145,6 +157,14 @@ public class BitByteCasino {
                     }
                 }
                 case 4 -> {
+                    clearScreen();
+                    System.out.print("Would you like to view the tutorial for Color Game? (y/n): ");
+                    String viewTutorial = sc.next();
+                    System.out.println("");
+                    if (viewTutorial.equalsIgnoreCase("y")) {
+                        Tutorial.showColorGameTutorial();
+                    }
+                    clearScreen();
                     System.out.println("\t\t\t\t a88888b.          dP                       .88888.                       88888888b\r\n" + 
                         "\t\t\t\td8'   `88          88                      d8'   `88                      88\r\n" + 
                         "\t\t\t\t88        .d8888b. 88 .d8888b. 88d888b.    88        .d8888b. 88d8b.d8b. a88aaaa\r\n" + 
@@ -171,12 +191,14 @@ public class BitByteCasino {
                 }
 
                 case 5 -> {
+                    clearScreen();
                     System.out.print("Would you like to view the tutorial for Crazy Time? (y/n): ");
                     String viewTutorial = sc.next();
                     System.out.println("");
                     if (viewTutorial.equalsIgnoreCase("y")) {
                         Tutorial.showCrazyTimeTutorial();
                     }
+                    clearScreen();
                     System.out.println("\t\t\t\t                                                          d8,\r\n" +
                         "\t\t\t\t                                                   d8P   `8P\r\n" +
                         "\t\t\t\t                                                d888888P\r\n" +
@@ -206,13 +228,15 @@ public class BitByteCasino {
                     
                 
                 case 6 -> {
-                     System.out.print("Would you like to view the tutorial for Black Roulette? (y/n): ");
-                     String viewTutorial = sc.next();
+                    clearScreen();
+                    System.out.print("Would you like to view the tutorial for Black Roulette? (y/n): ");
+                    String viewTutorial = sc.next();
                     System.out.println("");
-                     if (viewTutorial.equalsIgnoreCase("y")) {
-                         Tutorial.showRouletteTutorial();
-                     }
+                    if (viewTutorial.equalsIgnoreCase("y")) {
+                        Tutorial.showRouletteTutorial();
+                    }
 
+                    clearScreen();
                     System.out.println("\t\t\t _______   __                      __              _______                       __             __      __ \r\n" + 
                         "\t\t\t|       \\ |  \\                    |  \\            |       \\                     |  \\           |  \\    |  \\\r\n" + 
                         "\t\t\t| $$$$$$$\\| $$  ______    _______ | $$   __       | $$$$$$$\\  ______   __    __ | $$  ______  _| $$_  _| $$_     ______\r\n" + 
