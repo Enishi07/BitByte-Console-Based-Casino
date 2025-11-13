@@ -177,19 +177,22 @@ public class BitByteCasino {
                     if (viewTutorial.equalsIgnoreCase("y")) {
                         Tutorial.showCrazyTimeTutorial();
                     }
-                    System.out.println("                                                          d8,\r\n" +
-                        "                                                   d8P   `8P\r\n" +
-                        "                                                d888888P\r\n" +
-                        " d8888b  88bd88b d888b8b  d88888P ?88   d8P       ?88'    88b  88bd8b,d88b  d8888b\r\n" +
-                        "d8P' `P  88P'  `d8P' ?88     d8P' d88   88        88P     88P  88P'`?8P'?8bd8b_,dP\r\n" +
-                        "88b     d88     88b  ,88b  d8P'   ?8(  d88        88b    d88  d88  d88  88P88b\r\n" +
-                        "`?888P'd88'     `?88P'`88bd88888P'`?88P'?8b       `?8b  d88' d88' d88'  88b`?888P'\r\n" +
-                        "                                         )88\r\n" +
-                        "                                        ,d8P\r\n" +
-                        "                                     `?888P'");
-                    System.out.println("1. Start playing Crazy Time");
-                    System.out.println("2. Exit to menu");
-                    System.out.print("Enter your choice: ");
+                    System.out.println("\t\t\t\t                                                          d8,\r\n" +
+                        "\t\t\t\t                                                   d8P   `8P\r\n" +
+                        "\t\t\t\t                                                d888888P\r\n" +
+                        "\t\t\t\t d8888b  88bd88b d888b8b  d88888P ?88   d8P       ?88'    88b  88bd8b,d88b  d8888b\r\n" +
+                        "\t\t\t\td8P' `P  88P'  `d8P' ?88     d8P' d88   88        88P     88P  88P'`?8P'?8bd8b_,dP\r\n" +
+                        "\t\t\t\t88b     d88     88b  ,88b  d8P'   ?8(  d88        88b    d88  d88  d88  88P88b\r\n" +
+                        "\t\t\t\t`?888P'd88'     `?88P'`88bd88888P'`?88P'?8b       `?8b  d88' d88' d88'  88b`?888P'\r\n" +
+                        "\t\t\t\t                                         )88\r\n" +
+                        "\t\t\t\t                                        ,d8P\r\n" +
+                        "\t\t\t\t                                     `?888P'");
+                    System.out.println("==============================================================================================================================================================");
+                    System.out.printf("\t\t\t\t\t\t\t\tBalance: PHP%.2f \n" ,balance);
+                    System.out.println("==============================================================================================================================================================");
+                    System.out.println("\t\t\t\t\t\t\t\t1. Start playing Crazy Time");
+                    System.out.println("\t\t\t\t\t\t\t\t2. Exit to menu");
+                    System.out.println("\t\t\t\t\t\tEnter your choice: ");
                     int startChoice = sc.nextInt();
                     System.out.println("");
                     if (startChoice == 1) {
@@ -203,7 +206,7 @@ public class BitByteCasino {
                     
                 
                 case 6 -> {
-                     System.out.print("Would you like to view the tutorial for Color Game? (y/n): ");
+                     System.out.print("Would you like to view the tutorial for Black Roulette? (y/n): ");
                      String viewTutorial = sc.next();
                     System.out.println("");
                      if (viewTutorial.equalsIgnoreCase("y")) {
