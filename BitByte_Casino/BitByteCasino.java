@@ -39,6 +39,7 @@ public class BitByteCasino {
                         "  +#+    +#+    +#+         +#+     +#+    +#+    +#+        +#+     +#+                +#+        +#+     +#+        +#+    +#+     +#+  +#+#+# +#+    +#+\r\n" + 
                         " #+#    #+#    #+#         #+#     #+#    #+#    #+#        #+#     #+#                #+#    #+# #+#     #+# #+#    #+#    #+#     #+#   #+#+# #+#    #+#\r\n" + 
                         "######### ###########     ###     #########     ###        ###     ##########          ########  ###     ###  ######## ########### ###    ####  ########");
+                        
         do {
             System.out.println("==============================================================================================================================================================");
             System.out.printf("\t\t\t\t\t\t\t\tBalance: PHP%.2f \n" ,balance);
@@ -231,6 +232,7 @@ public class BitByteCasino {
                     clearScreen();
                     System.out.print("Would you like to view the tutorial for Black Roulette? (y/n): ");
                     String viewTutorial = sc.next();
+                    
                     System.out.println("");
                     if (viewTutorial.equalsIgnoreCase("y")) {
                         Tutorial.showRouletteTutorial();
