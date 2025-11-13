@@ -12,6 +12,7 @@ public class BitByteCasino {
         BlackjackGame blackjack = new BlackjackGame();
         SlotMachineGame slots = new SlotMachineGame();
         ColorGame colorGame = new ColorGame();
+        CrazyTimeGame crazyTime = new CrazyTimeGame();
         System.out.println(" /$$$$$$$  /$$   /$$     /$$$$$$$              /$$                      /$$$$$$                      /$$\r\n" + 
                         "| $$__  $$|__/  | $$    | $$__  $$            | $$                     /$$__  $$                    |__/\r\n" + 
                         "| $$  \\ $$ /$$ /$$$$$$  | $$  \\ $$ /$$   /$$ /$$$$$$    /$$$$$$       | $$  \\__/  /$$$$$$   /$$$$$$$ /$$ /$$$$$$$   /$$$$$$\\ \r\n" + 
@@ -33,7 +34,8 @@ public class BitByteCasino {
             System.out.println("\t\t\t\t\t2.  Blackjack");
             System.out.println("\t\t\t\t\t3.  Slot Machine");
             System.out.println("\t\t\t\t\t4.  Color Game");
-            System.out.println("\t\t\t\t\t5.  Exit");
+            System.out.println("\t\t\t\t\t5.  Crazy Time");
+            System.out.println("\t\t\t\t\t6.  Exit");
             System.out.println("----------------------------------------------------------------------------------------------");
             System.out.print("\t\t\tEnter your choice: ");
             choice = sc.nextInt();
@@ -76,7 +78,10 @@ public class BitByteCasino {
                     }
                     balance = colorGame.play(balance);
                 }
-                case 5 -> System.out.printf("Thanks for playing! Final balance: PHP%.2f" , balance);
+                case 5 -> {
+                    balance = crazyTime.play(balance);
+                }
+                case 6 -> System.out.printf("Thanks for playing! Final balance: PHP%.2f" , balance);
                 default -> System.out.println("Invalid choice!");
             }
 
@@ -85,7 +90,7 @@ public class BitByteCasino {
                 break;
             }
 
-        } while (choice != 5);
+        } while (choice != 6);
 
         sc.close();
     }
