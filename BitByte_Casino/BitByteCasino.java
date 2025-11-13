@@ -12,8 +12,21 @@ public class BitByteCasino {
         BlackjackGame blackjack = new BlackjackGame();
         SlotMachineGame slots = new SlotMachineGame();
         ColorGame colorGame = new ColorGame();
+        CrazyTimeGame crazyTime = new CrazyTimeGame();
         BlackRedRouletteGame rouletteGame = new BlackRedRouletteGame();
 
+         System.out.println(" /$$$$$$$  /$$   /$$     /$$$$$$$              /$$                      /$$$$$$                      /$$\r\n" + 
+                        "| $$__  $$|__/  | $$    | $$__  $$            | $$                     /$$__  $$                    |__/\r\n" + 
+                        "| $$  \\ $$ /$$ /$$$$$$  | $$  \\ $$ /$$   /$$ /$$$$$$    /$$$$$$       | $$  \\__/  /$$$$$$   /$$$$$$$ /$$ /$$$$$$$   /$$$$$$\\ \r\n" + 
+                        "| $$$$$$$ | $$|_  $$_/  | $$$$$$$ | $$  | $$|_  $$_/   /$$__  $$      | $$       |____  $$ /$$_____/| $$| $$__  $$ /$$__  $$\r\n" + 
+                        "| $$__  $$| $$  | $$    | $$__  $$| $$  | $$  | $$    | $$$$$$$$      | $$        /$$$$$$$|  $$$$$$ | $$| $$  \\ $$| $$  \\ $$\r\n" + 
+                        "| $$  \\ $$| $$  | $$ /$$| $$  \\ $$| $$  | $$  | $$ /$$| $$_____/      | $$    $$ /$$__  $$ \\____  $$| $$| $$  | $$| $$  | $$\r\n" +
+                        "| $$$$$$$/| $$  |  $$$$/| $$$$$$$/|  $$$$$$$  |  $$$$/|  $$$$$$$      |  $$$$$$/|  $$$$$$$ /$$$$$$$/| $$| $$  | $$|  $$$$$$/\r\n" +
+                        "|_______/ |__/   \\___/  |_______/  \\____  $$   \\___/   \\_______/       \\______/  \\_______/|_______/ |__/|__/  |__/ \\______/\r\n" +
+                        "                                   /$$  | $$                                                        \r\n" +
+                        "                                  |  $$$$$$/                                                        \r\n" +
+                        "                                   \\______/                                                         ");
+        
         
         do {
             System.out.println("==============================================================================================");
@@ -26,7 +39,7 @@ public class BitByteCasino {
             System.out.println("\t\t\t\t\t4.  Color Game");
              System.out.println("\t\t\t\t\t5.  Crazy Time");
              System.out.println("\t\t\t\t\t6.  Roulette");
-            System.out.println("\t\t\t\t\7.  Exit");
+            System.out.println("\t\t\t\t\t7.  Exit");
             System.out.println("----------------------------------------------------------------------------------------------");
             System.out.print("\t\t\tEnter your choice: ");
             choice = sc.nextInt();
