@@ -65,13 +65,13 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
             
             // ---------------- Bet input ----------------
             System.out.printf("\t\t\t\t\tBalance: PHP%.2f\n\n", balance);
-            System.out.print("Enter your bet amount: $");
+            System.out.print("Enter your bet amount: PHP:");
             double betAmount = 0;
             while (betAmount <= 0 || betAmount > balance) {
                 try {
                     betAmount = Double.parseDouble(scanner.nextLine().trim());
                     if (betAmount <= 0 || betAmount > balance) {
-                        System.out.print("Invalid amount. Enter a value between $0 and $" + balance + ": ");
+                        System.out.print("Invalid amount. Enter a value between PHP:0 and PHP:" + balance + ": ");
                     }
                 } catch (NumberFormatException e) {
                     System.out.print("Invalid input. Enter a valid amount: ");
