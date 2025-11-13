@@ -22,4 +22,5 @@ abstract class BitByteCasinoGame {
     }
 
     public abstract double play(double balance);
+    
 }

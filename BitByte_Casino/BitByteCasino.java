@@ -12,6 +12,7 @@ public class BitByteCasino {
         BlackjackGame blackjack = new BlackjackGame();
         SlotMachineGame slots = new SlotMachineGame();
         ColorGame colorGame = new ColorGame();
+        BlackRedRouletteGame rouletteGame = new BlackRedRouletteGame();
 
         System.out.println(" Welcome to the Mini Java Casino! ");
 
@@ -31,7 +32,8 @@ public class BitByteCasino {
             System.out.println("\t\t\t\t\t2.  Blackjack");
             System.out.println("\t\t\t\t\t3.  Slot Machine");
             System.out.println("\t\t\t\t\t4.  Color Game");
-            System.out.println("\t\t\t\t\t5.  Exit");
+            System.out.println("\t\t\t\t\t5.  Roulette");
+            System.out.println("\t\t\t\t\t6.  Exit");
             System.out.println("----------------------------------------------------------------------------------------------");
             System.out.print("\t\t\tEnter your choice: ");
             choice = sc.nextInt();
@@ -74,7 +76,17 @@ public class BitByteCasino {
                     }
                     balance = colorGame.play(balance);
                 }
-                case 5 -> System.out.printf("Thanks for playing! Final balance: PHP%.2f" , balance);
+                case 5 -> {
+                    // System.out.print("Would you like to view the tutorial for Color Game? (y/n): ");
+                    // String viewTutorial = sc.next();
+                    System.out.println("");
+                    // if (viewTutorial.equalsIgnoreCase("y")) {
+                    //     Tutorial.showColorGameTutorial();
+                    // }
+                    balance = rouletteGame.play(balance);
+                }
+
+                case 6 -> System.out.printf("Thanks for playing! Final balance: PHP%.2f" , balance);
                 default -> System.out.println("Invalid choice!");
             }
 
@@ -83,7 +95,7 @@ public class BitByteCasino {
                 break;
             }
 
-        } while (choice != 5);
+        } while (choice != 6);
 
         sc.close();
     }
