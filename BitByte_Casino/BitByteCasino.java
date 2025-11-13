@@ -12,22 +12,18 @@ public class BitByteCasino {
         BlackjackGame blackjack = new BlackjackGame();
         SlotMachineGame slots = new SlotMachineGame();
         ColorGame colorGame = new ColorGame();
-        try {
-            if (System.getProperty("os.name").contains("Windows")) {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } else {
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-            }
-        } catch (Exception e) {
-            // Fallback (just print blank lines)
-            for (int i = 0; i < 50; i++) System.out.println();
-        }
-        System.out.println("██████  ██ ████████ ██████  ██    ██ ████████ ███████      ██████  █████  ███████ ██ ███    ██  ██████ \r\n" + 
-                        "██   ██ ██    ██    ██   ██  ██  ██     ██    ██          ██      ██   ██ ██      ██ ████   ██ ██    ██ \r\n" + 
-                        "██████  ██    ██    ██████    ████      ██    █████       ██      ███████ ███████ ██ ██ ██  ██ ██    ██ \r\n" + 
-                        "██   ██ ██    ██    ██   ██    ██       ██    ██          ██      ██   ██      ██ ██ ██  ██ ██ ██    ██ \r\n" + 
-                        "██████  ██    ██    ██████     ██       ██    ███████      ██████ ██   ██ ███████ ██ ██   ████  ██████  ");
+        CrazyTimeGame crazyTime = new CrazyTimeGame();
+        System.out.println(" /$$$$$$$  /$$   /$$     /$$$$$$$              /$$                      /$$$$$$                      /$$\r\n" + 
+                        "| $$__  $$|__/  | $$    | $$__  $$            | $$                     /$$__  $$                    |__/\r\n" + 
+                        "| $$  \\ $$ /$$ /$$$$$$  | $$  \\ $$ /$$   /$$ /$$$$$$    /$$$$$$       | $$  \\__/  /$$$$$$   /$$$$$$$ /$$ /$$$$$$$   /$$$$$$\\ \r\n" + 
+                        "| $$$$$$$ | $$|_  $$_/  | $$$$$$$ | $$  | $$|_  $$_/   /$$__  $$      | $$       |____  $$ /$$_____/| $$| $$__  $$ /$$__  $$\r\n" + 
+                        "| $$__  $$| $$  | $$    | $$__  $$| $$  | $$  | $$    | $$$$$$$$      | $$        /$$$$$$$|  $$$$$$ | $$| $$  \\ $$| $$  \\ $$\r\n" + 
+                        "| $$  \\ $$| $$  | $$ /$$| $$  \\ $$| $$  | $$  | $$ /$$| $$_____/      | $$    $$ /$$__  $$ \\____  $$| $$| $$  | $$| $$  | $$\r\n" +
+                        "| $$$$$$$/| $$  |  $$$$/| $$$$$$$/|  $$$$$$$  |  $$$$/|  $$$$$$$      |  $$$$$$/|  $$$$$$$ /$$$$$$$/| $$| $$  | $$|  $$$$$$/\r\n" +
+                        "|_______/ |__/   \\___/  |_______/  \\____  $$   \\___/   \\_______/       \\______/  \\_______/|_______/ |__/|__/  |__/ \\______/\r\n" +
+                        "                                   /$$  | $$                                                        \r\n" +
+                        "                                  |  $$$$$$/                                                        \r\n" +
+                        "                                   \\______/                                                         ");
         
         do {
             System.out.println("==============================================================================================");
@@ -38,7 +34,8 @@ public class BitByteCasino {
             System.out.println("\t\t\t\t\t2.  Blackjack");
             System.out.println("\t\t\t\t\t3.  Slot Machine");
             System.out.println("\t\t\t\t\t4.  Color Game");
-            System.out.println("\t\t\t\t\t5.  Exit");
+            System.out.println("\t\t\t\t\t5.  Crazy Time");
+            System.out.println("\t\t\t\t\t6.  Exit");
             System.out.println("----------------------------------------------------------------------------------------------");
             System.out.print("\t\t\tEnter your choice: ");
             choice = sc.nextInt();
@@ -163,7 +160,10 @@ public class BitByteCasino {
                         System.out.println("Invalid choice! Returning to menu.");
                     }
                 }
-                case 5 -> System.out.printf("Thanks for playing! Final balance: PHP%.2f" , balance);
+                case 5 -> {
+                    balance = crazyTime.play(balance);
+                }
+                case 6 -> System.out.printf("Thanks for playing! Final balance: PHP%.2f" , balance);
                 default -> System.out.println("Invalid choice!");
             }
 
@@ -172,7 +172,7 @@ public class BitByteCasino {
                 break;
             }
 
-        } while (choice != 5);
+        } while (choice != 6);
 
         sc.close();
     }
