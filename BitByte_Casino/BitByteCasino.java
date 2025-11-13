@@ -104,7 +104,7 @@ public class BitByteCasino {
                     System.out.println("==============================================================================================================================================================");
                     System.out.println("\t\t\t\t\t\t\t\t1. Start playing BlackJack");
                     System.out.println("\t\t\t\t\t\t\t\t2. Exit to menu");
-                    System.out.println("\t\t\t\t\t\tEnter your choice: ");
+                    System.out.print("\t\t\t\t\t\tEnter your choice: ");
                     int startChoice = sc.nextInt();
                     System.out.println("");
                     if (startChoice == 1) {
@@ -133,7 +133,7 @@ public class BitByteCasino {
                     System.out.println("==============================================================================================================================================================");
                     System.out.println("\t\t\t\t\t\t\t\t1. Start playing Slot Machine");
                     System.out.println("\t\t\t\t\t\t\t\t2. Exit to menu");
-                    System.out.println("\t\t\t\t\t\tEnter your choice: ");
+                    System.out.print("\t\t\t\t\t\tEnter your choice: ");
                     int startChoice = sc.nextInt();
                     System.out.println("");
                     if (startChoice == 1) {
@@ -192,7 +192,7 @@ public class BitByteCasino {
                     System.out.println("==============================================================================================================================================================");
                     System.out.println("\t\t\t\t\t\t\t\t1. Start playing Crazy Time");
                     System.out.println("\t\t\t\t\t\t\t\t2. Exit to menu");
-                    System.out.println("\t\t\t\t\t\tEnter your choice: ");
+                    System.out.print("\t\t\t\t\t\tEnter your choice: ");
                     int startChoice = sc.nextInt();
                     System.out.println("");
                     if (startChoice == 1) {
@@ -228,7 +228,7 @@ public class BitByteCasino {
                     System.out.println("==============================================================================================================================================================");
                     System.out.println("\t\t\t\t\t\t\t\t1. Start playing Black Roulette");
                     System.out.println("\t\t\t\t\t\t\t\t2. Exit to menu");
-                    System.out.println("\t\t\t\t\t\tEnter your choice: ");
+                    System.out.print("\t\t\t\t\t\tEnter your choice: ");
                     int startChoice = sc.nextInt();
                     System.out.println("");
                     if (startChoice == 1) {
