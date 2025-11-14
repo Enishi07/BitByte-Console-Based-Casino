@@ -1,6 +1,28 @@
 
 // 🎨 Philippine Color Game
 class ColorGame extends BitByteCasinoGame {
+    // ANSI color codes
+    private static final String RESET = "\u001B[0m";
+    private static final String RED_BG = "\u001B[41m";
+    private static final String BLUE_BG = "\u001B[44m";
+    private static final String GREEN_BG = "\u001B[42m";
+    private static final String YELLOW_BG = "\u001B[43m";
+    private static final String PINK_BG = "\u001B[45m";
+    private static final String WHITE_BG = "\u001B[47m";
+    private static final String WHITE = "\u001B[97m";
+
+    private String getColorCode(String color) {
+        switch (color.toLowerCase()) {
+            case "red": return RED_BG + WHITE;
+            case "blue": return BLUE_BG + WHITE;
+            case "green": return GREEN_BG + WHITE;
+            case "yellow": return YELLOW_BG + WHITE;
+            case "pink": return PINK_BG + WHITE;
+            case "white": return WHITE_BG + WHITE;
+            default: return RESET;
+        }
+    }
+
     @Override
     public double play(double balance) {
         boolean keepPlaying = true;
@@ -169,34 +191,27 @@ class ColorGame extends BitByteCasinoGame {
 
     // 🎨 Color box
     private void printColorBox(String color) {
-        int width = 11;
-        int leftPad = (width - color.length()) / 2;
-        int rightPad = width - color.length() - leftPad;
-        String centered = " ".repeat(leftPad) + color + " ".repeat(rightPad);
+        String bg = getColorCode(color);
         System.out.println("       .-----------.    ");
-        System.out.println("     .`          .'     ");
-        System.out.println("    |           |    ");
-        System.out.println("    |           |    ");
-        System.out.println("    |" + centered + "|    ");
+        System.out.println("     .`" + bg + "          " + RESET + ".'     ");
+        System.out.println("    |" + bg + "           " + RESET + "|    ");
+        System.out.println("    |" + bg + "           " + RESET + "|    ");
+        System.out.println("    |" + bg + "           " + RESET + "|    ");
         System.out.println("    |           |  .  ");
-        System.out.println("    |___________|.'    ");
+        System.out.println("    |" + bg + "           " + RESET + "|.'    ");
     }
 
     // 🎨 Color boxes (3 boxes)
     private void printColorBoxes(String[] colors) {
-        int width = 11;
-        String[] centered = new String[3];
-        for (int i = 0; i < 3; i++) {
-            int leftPad = (width - colors[i].length()) / 2;
-            int rightPad = width - colors[i].length() - leftPad;
-            centered[i] = " ".repeat(leftPad) + colors[i] + " ".repeat(rightPad);
-        }
+        String bg0 = getColorCode(colors[0]);
+        String bg1 = getColorCode(colors[1]);
+        String bg2 = getColorCode(colors[2]);
         System.out.println("       .-----------.      .-----------.      .-----------. ");
-        System.out.println("     .`          .'|    .`          .'|    .`          .'|    ");
-        System.out.println("    |```````````|  |   |```````````|  |   |```````````|  |");
-        System.out.println("    |           |  |   |           |  |   |           |  | ");
-        System.out.println("    |" + centered[0] + "|  |   |" + centered[1] + "|  |   |" + centered[2] + "|  |");
-        System.out.println("    |           |  .   |           |  .   |           |  .    ");
-        System.out.println("    |___________|.'    |___________|.'    |___________|.'    ");
+        System.out.println("     .`          .`|    .`          .`|    .`          .`|    ");
+        System.out.println("    |" + bg0 + "```````````" + RESET + "|  |   |" + bg1 + "```````````" + RESET + "|  |   |" + bg2 + "```````````" + RESET + "|  |");
+        System.out.println("    |" + bg0 + "           " + RESET + "|  |   |" + bg1 + "           " + RESET + "|  |   |" + bg2 + "           " + RESET + "|  | ");
+        System.out.println("    |" + bg0 + "           " + RESET + "|  |   |" + bg1 + "           " + RESET + "|  |   |" + bg2 + "           " + RESET + "|  |");
+        System.out.println("    |" + bg0 + "           " + RESET + "|  |   |" + bg1 + "           " + RESET + "|  |   |" + bg2 + "           " + RESET + "|  |    ");
+        System.out.println("    |" + bg0 + "           " + RESET + "|.'    |" + bg1 + "           " + RESET + "|.'    |" + bg2 + "           " + RESET + "|.'    ");
     }
 }
