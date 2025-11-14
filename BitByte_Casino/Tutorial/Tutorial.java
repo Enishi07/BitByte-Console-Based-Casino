@@ -93,13 +93,13 @@ public class Tutorial {
     System.out.println("Rules:");
     System.out.println("- You can bet on a COLOR or a NUMBER (0–36).");
     System.out.println("- Colors are:");
-    System.out.println("  • Red  → numbers like 1, 3, 5, 7, 9...");
-    System.out.println("  • Black → numbers like 2, 4, 6, 8, 10...");
-    System.out.println("  • Green → 0 only.");
+    System.out.println("  - Red  -> numbers like 1, 3, 5, 7, 9...");
+    System.out.println("  - Black -> numbers like 2, 4, 6, 8, 10...");
+    System.out.println("  - Green -> 0 only.");
     System.out.println();
     System.out.println("Betting Options:");
-    System.out.println("- Bet on a number → Higher risk, higher reward.");
-    System.out.println("- Bet on a color → Safer, smaller reward.");
+    System.out.println("- Bet on a number -> Higher risk, higher reward.");
+    System.out.println("- Bet on a color -> Safer, smaller reward.");
     System.out.println();
     System.out.println("Winning Mechanics:");
     System.out.println("- If your number is drawn: You win 35x your bet!");
