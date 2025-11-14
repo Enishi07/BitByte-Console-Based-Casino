@@ -210,7 +210,7 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
                 choice = scanner.nextLine().trim();
             }
             if (choice.equals("1")) clearScreen();
-            if (choice.equals("2")) keepPlaying = false;
+            if (choice.equals("2")) clearScreen(); keepPlaying = false;
             
         }
 

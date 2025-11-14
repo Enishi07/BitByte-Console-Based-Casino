@@ -49,116 +49,130 @@ public class CrazyTimeGame extends BitByteCasinoGame {
 
     @Override
     public double play(double balance) {
-        clearScreen();
-        System.out.println("Welcome to Crazy Time!");
-        System.out.printf("Your balance: PHP%.2f\n", balance);
-        System.out.print("Enter bet amount: ");
-        double bet = sc.nextDouble();
-        if (bet > balance || bet <= 0) {
-            System.out.println("Invalid bet!");
-            return balance;
-        }
-        System.out.println("Bet on: 1, 2, 5, 10, CoinFlip, CashHunt, Pachinko, or CrazyTime");
-        System.out.print("Your choice: ");
-        String betOn = sc.next();
+        boolean keepPlaying = true;
+        while (keepPlaying) {
+            clearScreen();
+            System.out.println("Welcome to Crazy Time!");
+            System.out.printf("Your balance: PHP%.2f\n", balance);
+            System.out.print("Enter bet amount: ");
+            double bet = sc.nextDouble();
+            sc.nextLine(); // consume newline
+            if (bet > balance || bet <= 0) {
+                System.out.println("Invalid bet!");
+                return balance;
+            }
+            System.out.println("Bet on: 1, 2, 5, 10, CoinFlip, CashHunt, Pachinko, or CrazyTime");
+            System.out.print("Your choice: ");
+            String betOn = sc.nextLine().trim();
 
-        // Top Slot: random segment and multiplier 1-10
-        String topSlot = wheel.get(rand.nextInt(wheel.size()));
-        int topMultiplier = rand.nextInt(10) + 1;
-        System.out.println("Top Slot: " + topSlot + " with multiplier x" + topMultiplier);
+            // Top Slot: random segment and multiplier 1-10
+            String topSlot = wheel.get(rand.nextInt(wheel.size()));
+            int topMultiplier = rand.nextInt(10) + 1;
+            System.out.println("Top Slot: " + topSlot + " with multiplier x" + topMultiplier);
 
-        // Spin wheel animation
-        System.out.println("\nSpinning the wheel...\n");
+            // Spin wheel animation
+            System.out.println("\nSpinning the wheel...\n");
 
-        double centerX = WIDTH / 2.0;
-        double centerY = HEIGHT / 2.0;
-        double radiusX = WIDTH * 0.38;
-        double radiusY = HEIGHT * 0.38;
+            double centerX = WIDTH / 2.0;
+            double centerY = HEIGHT / 2.0;
+            double radiusX = WIDTH * 0.38;
+            double radiusY = HEIGHT * 0.38;
 
-        int pockets = SEGMENTS.length;
-        int[] px = new int[pockets];
-        int[] py = new int[pockets];
-        double[] ang = new double[pockets];
+            int pockets = SEGMENTS.length;
+            int[] px = new int[pockets];
+            int[] py = new int[pockets];
+            double[] ang = new double[pockets];
 
-        for (int i = 0; i < pockets; i++) {
-            double a = 2 * Math.PI * i / pockets - Math.PI / 2;
-            ang[i] = a;
-            int x = (int) Math.round(centerX + Math.cos(a) * radiusX);
-            int y = (int) Math.round(centerY + Math.sin(a) * radiusY);
-            if (x < 0) x = 0;
-            if (x > WIDTH - 2) x = WIDTH - 2;
-            if (y < 0) y = 0;
-            if (y > HEIGHT - 1) y = HEIGHT - 1;
-            px[i] = x;
-            py[i] = y;
-        }
+            for (int i = 0; i < pockets; i++) {
+                double a = 2 * Math.PI * i / pockets - Math.PI / 2;
+                ang[i] = a;
+                int x = (int) Math.round(centerX + Math.cos(a) * radiusX);
+                int y = (int) Math.round(centerY + Math.sin(a) * radiusY);
+                if (x < 0) x = 0;
+                if (x > WIDTH - 2) x = WIDTH - 2;
+                if (y < 0) y = 0;
+                if (y > HEIGHT - 1) y = HEIGHT - 1;
+                px[i] = x;
+                py[i] = y;
+            }
 
-        char[][] canvas = buildBaseCanvas(WIDTH, HEIGHT, centerX, centerY, radiusX, radiusY);
-        for (int i = 0; i < pockets; i++) drawSeparator(canvas, centerX, centerY, ang[i], (int)(radiusX * 0.78));
+            char[][] canvas = buildBaseCanvas(WIDTH, HEIGHT, centerX, centerY, radiusX, radiusY);
+            for (int i = 0; i < pockets; i++) drawSeparator(canvas, centerX, centerY, ang[i], (int)(radiusX * 0.78));
 
-        int startIndex = rand.nextInt(pockets);
-        int finalIndex = rand.nextInt(pockets);
+            int startIndex = rand.nextInt(pockets);
+            int finalIndex = rand.nextInt(pockets);
 
-        int frames = 60;
-        int totalMs = 2000;
-        int sleepMs = Math.max(1, totalMs / frames);
-        int laps = 3;
-        int totalSteps = laps * pockets + ((finalIndex - startIndex) % pockets + pockets) % pockets;
+            int frames = 60;
+            int totalMs = 2000;
+            int sleepMs = Math.max(1, totalMs / frames);
+            int laps = 3;
+            int totalSteps = laps * pockets + ((finalIndex - startIndex) % pockets + pockets) % pockets;
 
-        for (int f = 0; f < frames; f++) {
-            double t = f / (double)(frames - 1);
-            double ease = 1 - Math.pow(1 - t, 3);
-            int step = (int)Math.round(ease * totalSteps);
-            int current = (startIndex + step) % pockets;
+            for (int f = 0; f < frames; f++) {
+                double t = f / (double)(frames - 1);
+                double ease = 1 - Math.pow(1 - t, 3);
+                int step = (int)Math.round(ease * totalSteps);
+                int current = (startIndex + step) % pockets;
+
+                System.out.print(CURSOR_HOME);
+                renderFrame(canvas, px, py, pockets, current);
+
+                try { Thread.sleep(sleepMs); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+            }
 
             System.out.print(CURSOR_HOME);
-            renderFrame(canvas, px, py, pockets, current);
+            renderFrame(canvas, px, py, pockets, finalIndex);
 
-            try { Thread.sleep(sleepMs); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
-        }
+            for (int i = 0; i < 6; i++) {
+                System.out.print(CURSOR_HOME);
+                if (i % 2 == 0) renderFrame(canvas, px, py, pockets, finalIndex);
+                else renderFrameWithoutPocket(canvas, px, py, pockets, finalIndex);
 
-        System.out.print(CURSOR_HOME);
-        renderFrame(canvas, px, py, pockets, finalIndex);
-
-        for (int i = 0; i < 6; i++) {
-            System.out.print(CURSOR_HOME);
-            if (i % 2 == 0) renderFrame(canvas, px, py, pockets, finalIndex);
-            else renderFrameWithoutPocket(canvas, px, py, pockets, finalIndex);
-
-            try { Thread.sleep(180); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
-        }
-
-        String result = SEGMENTS[finalIndex];
-        System.out.println("============================ Result =============================");
-        System.out.println("\nResult: " + segmentColorCode(COLORS[finalIndex]) + WHITE + formatSegment(result) + RESET);
-
-        double payout = 0;
-        if (result.equals(betOn)) {
-            if (result.equals("1")) payout = bet * 1;
-            else if (result.equals("2")) payout = bet * 2;
-            else if (result.equals("5")) payout = bet * 5;
-            else if (result.equals("10")) payout = bet * 10;
-            else { // Bonus
-                payout = bet * 10; // Base for bonus
-                int bonusMult = rand.nextInt(99) + 2; // 2-100
-                payout *= bonusMult;
-                System.out.println("Bonus multiplier: x" + bonusMult);
+                try { Thread.sleep(180); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
             }
-            // Apply Top Slot if matches
-            if (result.equals(topSlot)) {
-                payout *= topMultiplier;
-                System.out.println("Top Slot applied! Total multiplier x" + topMultiplier);
+
+            String result = SEGMENTS[finalIndex];
+            System.out.println("============================ Result =============================");
+            System.out.println("\nResult: " + segmentColorCode(COLORS[finalIndex]) + WHITE + formatSegment(result) + RESET);
+
+            double payout = 0;
+            if (result.equals(betOn)) {
+                if (result.equals("1")) payout = bet * 1;
+                else if (result.equals("2")) payout = bet * 2;
+                else if (result.equals("5")) payout = bet * 5;
+                else if (result.equals("10")) payout = bet * 10;
+                else { // Bonus
+                    payout = bet * 10; // Base for bonus
+                    int bonusMult = rand.nextInt(99) + 2; // 2-100
+                    payout *= bonusMult;
+                    System.out.println("Bonus multiplier: x" + bonusMult);
+                }
+                // Apply Top Slot if matches
+                if (result.equals(topSlot)) {
+                    payout *= topMultiplier;
+                    System.out.println("Top Slot applied! Total multiplier x" + topMultiplier);
+                }
+                balance += payout;
+                System.out.printf("You win PHP%.2f!\n", payout);
+            } else {
+                balance -= bet;
+                System.out.println("You lose!");
             }
-            balance += payout;
-            System.out.printf("You win PHP%.2f!\n", payout);
-        } else {
-            balance -= bet;
-            System.out.println("You lose!");
+            System.out.printf("New balance: PHP%.2f\n", balance);
+            System.out.println("Press enter to continue...");
+            sc.nextLine(); // Consume newline
+
+            System.out.println("1. Continue playing");
+            System.out.println("2. Exit to main menu");
+            System.out.print("Choose an option: ");
+            String choice = sc.nextLine().trim();
+            while (!choice.equals("1") && !choice.equals("2")) {
+                System.out.print("Invalid option. Choose 1 or 2: ");
+                choice = sc.nextLine().trim();
+            }
+            if (choice.equals("1")) clearScreen();
+            if (choice.equals("2")) keepPlaying = false;
         }
-        System.out.printf("New balance: PHP%.2f\n", balance);
-        System.out.println("Press enter to continue...");
-        sc.nextLine(); // Consume newline
-        sc.nextLine();
         return balance;
     }
 

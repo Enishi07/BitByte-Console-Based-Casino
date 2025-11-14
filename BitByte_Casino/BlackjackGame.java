@@ -88,116 +88,130 @@ class BlackjackGame extends BitByteCasinoGame {
 
     @Override
     public double play(double balance) {
-        System.out.print("Enter your bet: PHP");
-        double bet = sc.nextDouble();
-        if (bet > balance) {
-            System.out.println("Not enough balance!");
-            return balance;
-        }
-
-        // Deal initial hands
-        java.util.List<String> playerHand = new java.util.ArrayList<>();
-        java.util.List<String> dealerHand = new java.util.ArrayList<>();
-        clearScreen();
-
-        playerHand.add(drawCard());
-        playerHand.add(drawCard());
-        dealerHand.add(drawCard());
-        dealerHand.add(drawCard());
-
-        clearScreen();
-        System.out.println("\nDealer's hand: " + dealerHand.get(0) + " [Hidden]");
-        printHand("Your", playerHand, false);
-        printHand("Dealer's", dealerHand, true);
-
-        // Check for blackjack
-        if (calculateTotal(playerHand) == 21) {
-            if (calculateTotal(dealerHand) == 21) {
-                System.out.println("Both you and the dealer have Blackjack! Push!");
+        boolean keepPlaying = true;
+        while (keepPlaying) {
+            System.out.print("Enter your bet: PHP");
+            double bet = sc.nextDouble();
+            sc.nextLine(); // consume newline
+            if (bet > balance) {
+                System.out.println("Not enough balance!");
                 return balance;
-            } else {
-                System.out.println("🎉 Blackjack! You win PHP" + (bet * 1.5) + "!");
-                return balance + bet * 1.5;
             }
-        }
 
-        // Player's turn
-        boolean playerBust = false;
-        boolean doubled = false;
-
-        while (true) {
-            System.out.println("\nChoose action:");
-            System.out.println("1. Hit");
-            System.out.println("2. Stand");
-            System.out.println("3. Double Down");
-            System.out.print("Enter your choice: ");
-            int choice = sc.nextInt();
-
-            if (choice == 1) { // Hit
-                clearScreen();
-                playerHand.add(drawCard());
-                printHand("Your", playerHand, false);
-                if (calculateTotal(playerHand) > 21) {
-                    System.out.println("💥 You bust!");
-                    playerBust = true;
-                    break;
-                }
-            } else if (choice == 2) { // Stand
-                break;
-            } else if (choice == 3) { // Double Down
-                if (balance < bet * 2) {
-                    System.out.println("Not enough balance to double down!");
-                    continue;
-                }
-                bet *= 2;
-                playerHand.add(drawCard());
-                clearScreen();
-                printHand("Your", playerHand, false);
-                doubled = true;
-                if (calculateTotal(playerHand) > 21) {
-                    System.out.println("💥 You bust!");
-                    playerBust = true;
-                }
-                break;
-            } else {
-                System.out.println("Invalid choice!");
-            }
-        }
-
-        // Dealer's turn
-        if (!playerBust) {
+            // Deal initial hands
+            java.util.List<String> playerHand = new java.util.ArrayList<>();
+            java.util.List<String> dealerHand = new java.util.ArrayList<>();
             clearScreen();
-            System.out.println("\nDealer reveals their hand...");
-            printHand("Dealer's", dealerHand, false);
 
-            while (calculateTotal(dealerHand) < 17) {
-                System.out.println("Dealer hits...");
-                dealerHand.add(drawCard());
-                printHand("Dealer's", dealerHand, false);
-            }
+            playerHand.add(drawCard());
+            playerHand.add(drawCard());
+            dealerHand.add(drawCard());
+            dealerHand.add(drawCard());
 
-            int playerTotal = calculateTotal(playerHand);
-            int dealerTotal = calculateTotal(dealerHand);
+            clearScreen();
+            System.out.println("\nDealer's hand: " + dealerHand.get(0) + " [Hidden]");
+            printHand("Your", playerHand, false);
+            printHand("Dealer's", dealerHand, true);
 
-            System.out.println("\nYour total: " + playerTotal);
-            System.out.println("Dealer's total: " + dealerTotal);
-
-            if (dealerTotal > 21) {
-                System.out.println("Dealer busts! You win PHP" + bet + "!");
-                balance += bet;
-            } else if (playerTotal > dealerTotal) {
-                System.out.println("You win PHP" + bet + "!");
-                balance += bet;
-            } else if (playerTotal < dealerTotal) {
-                System.out.println("You lose PHP" + bet + ".");
-                balance -= bet;
+            // Check for blackjack
+            if (calculateTotal(playerHand) == 21) {
+                if (calculateTotal(dealerHand) == 21) {
+                    System.out.println("Both you and the dealer have Blackjack! Push!");
+                } else {
+                    System.out.println("🎉 Blackjack! You win PHP" + (bet * 1.5) + "!");
+                    balance += bet * 1.5;
+                }
             } else {
-                System.out.println("Push! No one wins.");
-            }
-        } else {
-            balance -= bet;
-        }
+                // Player's turn
+                boolean playerBust = false;
+                boolean doubled = false;
 
+                while (true) {
+                    System.out.println("\nChoose action:");
+                    System.out.println("1. Hit");
+                    System.out.println("2. Stand");
+                    System.out.println("3. Double Down");
+                    System.out.print("Enter your choice: ");
+                    int choice = sc.nextInt();
+                    sc.nextLine(); // consume newline
+
+                    if (choice == 1) { // Hit
+                        clearScreen();
+                        playerHand.add(drawCard());
+                        printHand("Your", playerHand, false);
+                        if (calculateTotal(playerHand) > 21) {
+                            System.out.println("💥 You bust!");
+                            playerBust = true;
+                            break;
+                        }
+                    } else if (choice == 2) { // Stand
+                        break;
+                    } else if (choice == 3) { // Double Down
+                        if (balance < bet * 2) {
+                            System.out.println("Not enough balance to double down!");
+                            continue;
+                        }
+                        bet *= 2;
+                        playerHand.add(drawCard());
+                        clearScreen();
+                        printHand("Your", playerHand, false);
+                        doubled = true;
+                        if (calculateTotal(playerHand) > 21) {
+                            System.out.println("💥 You bust!");
+                            playerBust = true;
+                        }
+                        break;
+                    } else {
+                        System.out.println("Invalid choice!");
+                    }
+                }
+
+                // Dealer's turn
+                if (!playerBust) {
+                    clearScreen();
+                    System.out.println("\nDealer reveals their hand...");
+                    printHand("Dealer's", dealerHand, false);
+
+                    while (calculateTotal(dealerHand) < 17) {
+                        System.out.println("Dealer hits...");
+                        dealerHand.add(drawCard());
+                        printHand("Dealer's", dealerHand, false);
+                    }
+
+                    int playerTotal = calculateTotal(playerHand);
+                    int dealerTotal = calculateTotal(dealerHand);
+
+                    System.out.println("\nYour total: " + playerTotal);
+                    System.out.println("Dealer's total: " + dealerTotal);
+
+                    if (dealerTotal > 21) {
+                        System.out.println("Dealer busts! You win PHP" + bet + "!");
+                        balance += bet;
+                    } else if (playerTotal > dealerTotal) {
+                        System.out.println("You win PHP" + bet + "!");
+                        balance += bet;
+                    } else if (playerTotal < dealerTotal) {
+                        System.out.println("You lose PHP" + bet + ".");
+                        balance -= bet;
+                    } else {
+                        System.out.println("Push! No one wins.");
+                    }
+                } else {
+                    balance -= bet;
+                }
+            }
+
+            System.out.println("1. Continue playing");
+            System.out.println("2. Exit to main menu");
+            System.out.print("Choose an option: ");
+            String choice = sc.nextLine().trim();
+            while (!choice.equals("1") && !choice.equals("2")) {
+                System.out.print("Invalid option. Choose 1 or 2: ");
+                choice = sc.nextLine().trim();
+            }
+            if (choice.equals("1")) clearScreen();
+            if (choice.equals("2")) keepPlaying = false;
+        }
         return balance;
     }
 }

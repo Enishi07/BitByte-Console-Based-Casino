@@ -2,53 +2,67 @@
 class SlotMachineGame extends BitByteCasinoGame {
     @Override
     public double play(double balance) {
-        System.out.print("Enter your bet: PHP");
-        double bet = sc.nextDouble();
-        if (bet > balance) {
-            System.out.println("Not enough balance!");
-            return balance;
-        }
-        clearScreen();
-
-        String[] symbols = {"^_^", "o_o", "O_O", ">:)", "T_T"};
-        String s1 = "", s2 = "", s3 = "";
-
-        System.out.println("\nSpinning...");
-        try {
-            //  Spin animation (with screen refresh)
-            for (int i = 0; i < 12; i++) {
-                s1 = symbols[rand.nextInt(symbols.length)];
-                s2 = symbols[rand.nextInt(symbols.length)];
-                s3 = symbols[rand.nextInt(symbols.length)];
-                clearScreen();
-                printMachine(s1, s2, s3);
-                Thread.sleep(120 + i * 10); // Gradually slow down
+        boolean keepPlaying = true;
+        while (keepPlaying) {
+            System.out.print("Enter your bet: PHP");
+            double bet = sc.nextDouble();
+            sc.nextLine(); // consume newline
+            if (bet > balance) {
+                System.out.println("Not enough balance!");
+                return balance;
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            clearScreen();
+
+            String[] symbols = {"^_^", "o_o", "O_O", ">:)", "T_T"};
+            String s1 = "", s2 = "", s3 = "";
+
+            System.out.println("\nSpinning...");
+            try {
+                //  Spin animation (with screen refresh)
+                for (int i = 0; i < 12; i++) {
+                    s1 = symbols[rand.nextInt(symbols.length)];
+                    s2 = symbols[rand.nextInt(symbols.length)];
+                    s3 = symbols[rand.nextInt(symbols.length)];
+                    clearScreen();
+                    printMachine(s1, s2, s3);
+                    Thread.sleep(120 + i * 10); // Gradually slow down
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            // Final spin result
+            s1 = symbols[rand.nextInt(symbols.length)];
+            s2 = symbols[rand.nextInt(symbols.length)];
+            s3 = symbols[rand.nextInt(symbols.length)];
+
+            clearScreen();
+            printMachine(s1, s2, s3);
+            System.out.println();
+
+            // Outcome
+            if (s1.equals(s2) && s2.equals(s3)) {
+                System.out.println("🎉 JACKPOT! You win PHP" + (bet * 5) + "!");
+                balance += bet * 5;
+            } else if (s1.equals(s2) || s2.equals(s3) || s1.equals(s3)) {
+                System.out.println("Nice! You win PHP" + (bet * 2) + "!");
+                balance += bet * 2;
+            } else {
+                System.out.println("You lose PHP" + bet + ".");
+                balance -= bet;
+            }
+
+            System.out.println("1. Continue playing");
+            System.out.println("2. Exit to main menu");
+            System.out.print("Choose an option: ");
+            String choice = sc.nextLine().trim();
+            while (!choice.equals("1") && !choice.equals("2")) {
+                System.out.print("Invalid option. Choose 1 or 2: ");
+                choice = sc.nextLine().trim();
+            }
+            if (choice.equals("1")) clearScreen();
+            if (choice.equals("2")) clearScreen(); keepPlaying = false;
         }
-
-        // Final spin result
-        s1 = symbols[rand.nextInt(symbols.length)];
-        s2 = symbols[rand.nextInt(symbols.length)];
-        s3 = symbols[rand.nextInt(symbols.length)];
-
-        clearScreen();
-        printMachine(s1, s2, s3);
-        System.out.println();
-
-        // Outcome
-        if (s1.equals(s2) && s2.equals(s3)) {
-            System.out.println("🎉 JACKPOT! You win PHP" + (bet * 5) + "!");
-            balance += bet * 5;
-        } else if (s1.equals(s2) || s2.equals(s3) || s1.equals(s3)) {
-            System.out.println("Nice! You win PHP" + (bet * 2) + "!");
-            balance += bet * 2;
-        } else {
-            System.out.println("You lose PHP" + bet + ".");
-            balance -= bet;
-        }
-
         return balance;
     }
 
