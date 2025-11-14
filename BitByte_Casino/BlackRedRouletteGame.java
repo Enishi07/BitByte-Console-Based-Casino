@@ -1,20 +1,21 @@
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class BlackRedRouletteGame extends BitByteCasinoGame {
 
     // ANSI color and screen controls
-    private static final String RESET   = "\u001B[0m";
-    private static final String RED_BG  = "\u001B[41m";
-    private static final String BLACK_BG= "\u001B[40m";
-    private static final String GREEN_BG= "\u001B[42m";
-    private static final String WHITE   = "\u001B[97m";
-    private static final String CURSOR_HOME = "\u001B[H"; // move cursor to top-left
+    private static final String RESET      = "\u001B[0m";
+    private static final String RED_BG     = "\u001B[41m";
+    private static final String BLACK_BG   = "\u001B[40m";
+    private static final String GREEN_BG   = "\u001B[42m";
+    private static final String WHITE      = "\u001B[97m";
+    private static final String CURSOR_HOME= "\u001B[H";
 
     // Ball styling
     private static final String BALL_BG = "\u001B[46m";  // Cyan background
-    private static final String BOLD = "\u001B[1m";
-    private static final String BLINK = "\u001B[5m";
+    private static final String BOLD    = "\u001B[1m";
+    private static final String BLINK   = "\u001B[5m";
 
     // European wheel sequence (clockwise from 0)
     private static final int[] NUMBERS = {
@@ -26,7 +27,7 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
         'G','R','B','R','B','R','B','R','B','R','B','R','B','R','B','R','B','R','B','R','B','R','B','R','B','R','B','R','B','R','B','R','B','R','B','R','B'
     };
 
-    private static final int WIDTH = 69;
+    private static final int WIDTH  = 69;
     private static final int HEIGHT = 25;
 
     @Override
@@ -35,86 +36,121 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
         Random rnd = rand;
 
         clearScreen();
-        
-       
 
         if (balance <= 0) {
             System.out.println(RED_BG + WHITE + "You have no balance to play!" + RESET);
             return balance;
         }
-        
-        
 
         boolean keepPlaying = true;
 
         while (keepPlaying) {
-             displayRouletteTable();
+            displayRouletteTable();
             if (balance <= 0) {
                 System.out.println(RED_BG + WHITE + "You have no balance left! Game over." + RESET);
                 break;
             }
 
-            
-
             // ---------------- Mechanics display ----------------
             System.out.println(BOLD + WHITE + "=== Game Mechanics ===" + RESET);
             System.out.println(GREEN_BG + WHITE + "  Correct number: Win 35x bet  " + RESET);
-            System.out.println(RED_BG + WHITE + "  Correct color:  Win 2x bet   " + RESET);
+            System.out.println(RED_BG   + WHITE + "  Correct color:  Win 2x bet   " + RESET);
             System.out.println(BLACK_BG + WHITE + "  Green (0): House wins        " + RESET);
             System.out.println();
-            
-            // ---------------- Bet input ----------------
-            System.out.printf("\t\t\t\t\tBalance: PHP%.2f\n\n", balance);
-            System.out.print("Enter your bet amount: PHP:");
-            double betAmount = 0;
-            while (betAmount <= 0 || betAmount > balance) {
-                try {
-                    betAmount = Double.parseDouble(scanner.nextLine().trim());
-                    if (betAmount <= 0 || betAmount > balance) {
-                        System.out.print("Invalid amount. Enter a value between PHP:0 and PHP:" + balance + ": ");
-                    }
-                } catch (NumberFormatException e) {
-                    System.out.print("Invalid input. Enter a valid amount: ");
-                }
-            }
 
-            System.out.print("Place your bet (Black/Red or number 0-36): ");
-            String bet = scanner.nextLine().trim().toLowerCase();
+            // ---------------- MULTI-BET INPUT ----------------
+            ArrayList<Bet> bets = new ArrayList<>();
+            double totalBet = 0;
 
-            boolean isNumberBet = false;
-            int numberBet = -1;
             while (true) {
-                if (bet.equals("black") || bet.equals("red")) break;
-                try {
-                    numberBet = Integer.parseInt(bet);
-                    if (numberBet >= 0 && numberBet <= 36) {
-                        isNumberBet = true;
-                        break;
-                    } else {
-                        System.out.print("Invalid number. Enter 0-36 or Black/Red: ");
-                        bet = scanner.nextLine().trim().toLowerCase();
+                System.out.printf(BOLD + WHITE + "=== Balance: PHP%.2f ===" + RESET + "\n", balance);
+                System.out.println("============= Place Your Bets =============");
+                System.out.println("Format:");
+                System.out.println(BOLD + WHITE + "  \"color <red/black/green> <amount>\" " + RESET);
+                System.out.println(BOLD + WHITE + "  \"number <0-36> <amount>\"" + RESET);
+                System.out.println(BOLD + WHITE + "  done  -> finish betting" + RESET);
+                System.out.printf("Total Bet: PHP%.2f\n", totalBet);
+                System.out.print("Enter bet: ");
+
+                String input = scanner.nextLine().trim().toLowerCase();
+                System.out.println();
+
+                if (input.equals("done")) {
+                    if (bets.isEmpty()) {
+                        System.out.println("You must place at least 1 bet!\n");
+                        continue;
                     }
-                } catch (NumberFormatException e) {
-                    System.out.print("Invalid input. Enter 0-36 or Black/Red: ");
-                    bet = scanner.nextLine().trim().toLowerCase();
+                    break;
                 }
+
+                String[] p = input.split(" ");
+                if (p.length != 3) {
+                    System.out.println("Invalid format. Try again.\n");
+                    continue;
+                }
+
+                String type = p[0];
+                String choice = p[1];
+                double amount;
+
+                try {
+                    amount = Double.parseDouble(p[2]);
+                } catch (Exception e) {
+                    System.out.println("Invalid amount.\n");
+                    continue;
+                }
+
+                if (amount <= 0 || amount > balance) {
+                    System.out.println("Not enough balance.\n");
+                    continue;
+                }
+
+                Bet b = new Bet();
+                b.amount = amount;
+
+                // NUMBER BET
+                if (type.equals("number")) {
+                    try {
+                        int num = Integer.parseInt(choice);
+                        if (num < 0 || num > 36) {
+                            System.out.println("Number must be 0–36.\n");
+                            continue;
+                        }
+                        b.type = "number";
+                        b.number = num;
+                    } catch (Exception e) {
+                        System.out.println("Invalid number.\n");
+                        continue;
+                    }
+                }
+                // COLOR BET
+                else if (type.equals("color")) {
+                    if (!choice.equals("red") && !choice.equals("black") && !choice.equals("green")) {
+                        System.out.println("Invalid color.\n");
+                        continue;
+                    }
+                    b.type = "color";
+                    b.color = choice;
+                }
+                else {
+                    System.out.println("Invalid bet type.\n");
+                    continue;
+                }
+
+                // Deduct balance immediately
+                balance -= amount;
+                totalBet += amount;
+
+                bets.add(b);
+                System.out.printf("Bet accepted! New balance: PHP%.2f\n\n", balance);
             }
 
-            clearScreen(); // ✅ clears table before animation
+            // ----------------------------------------------------
+            // Wheel animation (smoother)
+            // ----------------------------------------------------
+            clearScreen();
             System.out.println("\nSpinning the wheel...\n");
 
-            // Display numbers with colors if user bets a number
-            if (isNumberBet) {
-                System.out.println("Roulette numbers with colors:");
-                for (int i = 0; i < NUMBERS.length; i++) {
-                    String color = pocketColorCode(COLOR[i]);
-                    System.out.print(color + WHITE + formatNumber(NUMBERS[i]) + RESET + " ");
-                    if ((i + 1) % 12 == 0) System.out.println();
-                }
-                System.out.println("\n");
-            }
-
-            // ---------------- Wheel animation ----------------
             double centerX = WIDTH / 2.0;
             double centerY = HEIGHT / 2.0;
             double radiusX = WIDTH * 0.38;
@@ -130,10 +166,8 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
                 ang[i] = a;
                 int x = (int) Math.round(centerX + Math.cos(a) * radiusX);
                 int y = (int) Math.round(centerY + Math.sin(a) * radiusY);
-                if (x < 0) x = 0;
-                if (x > WIDTH - 2) x = WIDTH - 2;
-                if (y < 0) y = 0;
-                if (y > HEIGHT - 1) y = HEIGHT - 1;
+                x = Math.max(0, Math.min(WIDTH - 2, x));
+                y = Math.max(0, Math.min(HEIGHT - 1, y));
                 px[i] = x;
                 py[i] = y;
             }
@@ -144,14 +178,15 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
             int startIndex = rnd.nextInt(pockets);
             int finalIndex = rnd.nextInt(pockets);
 
-            int frames = 60;
+            int frames = 80;
             int totalMs = 2000;
             int sleepMs = Math.max(1, totalMs / frames);
-            int laps = 3;
+            int laps = 5;
             int totalSteps = laps * pockets + ((finalIndex - startIndex) % pockets + pockets) % pockets;
 
             for (int f = 0; f < frames; f++) {
                 double t = f / (double)(frames - 1);
+                // smooth easing
                 double ease = 1 - Math.pow(1 - t, 3);
                 int step = (int)Math.round(ease * totalSteps);
                 int current = (startIndex + step) % pockets;
@@ -169,39 +204,54 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
                 System.out.print(CURSOR_HOME);
                 if (i % 2 == 0) renderFrame(canvas, px, py, pockets, finalIndex);
                 else renderFrameWithoutPocket(canvas, px, py, pockets, finalIndex);
-
                 try { Thread.sleep(180); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
             }
 
             String winColor = COLOR[finalIndex] == 'R' ? "red" : COLOR[finalIndex] == 'B' ? "black" : "green";
             String winColorCode = COLOR[finalIndex] == 'R' ? RED_BG : COLOR[finalIndex] == 'B' ? BLACK_BG : GREEN_BG;
             int winNumber = NUMBERS[finalIndex];
+
             System.out.println("============================ Result =============================");
-            System.out.println("\nResult: " + winColorCode + WHITE + formatNumber(winNumber) + RESET + " " +
-                               winColor.toUpperCase());
+            System.out.println("\nResult: " + winColorCode + WHITE + formatNumber(winNumber) + RESET + " " + winColor.toUpperCase());
 
-            char betColorChar = isNumberBet ? getColorOfNumber(numberBet) : bet.equals("red") ? 'R' : bet.equals("black") ? 'B' : 'G';
-            String betColor = betColorChar == 'R' ? "red" : betColorChar == 'B' ? "black" : "green";
+            // ---------------- MULTI-BET EVALUATION ----------------
+            double winnings = 0;
 
-            if (isNumberBet && numberBet == winNumber) {
-                balance += betAmount * 35;
-                System.out.println(GREEN_BG + WHITE + "You WIN!  PHP:" + (betAmount * 35) + RESET);
-            } else if (betColor.equals(winColor)) {
-                balance += betAmount * 2;
-                System.out.println(GREEN_BG + WHITE + "You WIN!  PHP:" + (betAmount * 2) + RESET);
-            } else {
-                balance -= betAmount;
-                System.out.println(RED_BG + WHITE + "You LOSE! PHP:" + betAmount + RESET);
+            for (Bet b : bets) {
+                if (b.type.equals("number")) {
+                    if (b.number == winNumber) {
+                        double win = b.amount * 35;
+                        winnings += win;
+                        System.out.printf(GREEN_BG + WHITE + "WIN (Number %d): +PHP%.2f\n" + RESET, b.number, win);
+                    } else {
+                        System.out.printf(RED_BG + WHITE + "LOSE (Number %d)\n" + RESET, b.number);
+                    }
+                }
+
+                if (b.type.equals("color")) {
+                    if (b.color.equals(winColor)) {
+                        double win = b.amount * 2;
+                        winnings += win;
+                        System.out.printf(GREEN_BG + WHITE + "WIN (Color %s): +PHP%.2f\n" + RESET, b.color, win);
+                    } else {
+                        System.out.printf(RED_BG + WHITE + "LOSE (Color %s)\n" + RESET, b.color);
+                    }
+                }
             }
 
-            System.out.println("New Balance: PHP:" + balance + "\n");
+            balance += winnings;
 
+            System.out.printf("\nTotal Bet: PHP%.2f\n", totalBet);
+            System.out.printf("Total Winnings: PHP%.2f\n", winnings);
+            System.out.printf("New Balance: PHP%.2f\n", balance);
+
+            // ---------------- Continue or Exit ----------------
             if (balance <= 0) {
                 System.out.println(RED_BG + WHITE + "You don't have enough balance to continue!" + RESET);
                 break;
             }
 
-            System.out.println("1. Continue playing");
+            System.out.println("\n1. Continue playing");
             System.out.println("2. Exit to main menu");
             System.out.print("Choose an option: ");
             String choice = scanner.nextLine().trim();
@@ -210,8 +260,7 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
                 choice = scanner.nextLine().trim();
             }
             if (choice.equals("1")) clearScreen();
-            if (choice.equals("2")) clearScreen(); keepPlaying = false;
-            
+            if (choice.equals("2")) { clearScreen(); keepPlaying = false; }
         }
 
         return balance;
@@ -235,17 +284,13 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
 
         System.out.println(separator);
         System.out.print("|" + colorNameChar(0) + " ");
-        for (int i = 0; i < table[0].length; i++) {
-            System.out.print("|" + colorNameChar(table[0][i]) + " ");
-        }
+        for (int i = 0; i < table[0].length; i++) System.out.print("|" + colorNameChar(table[0][i]) + " ");
         System.out.println("|");
         System.out.println(separator);
 
         for (int r = 1; r < 3; r++) {
             System.out.print("|    ");
-            for (int c = 0; c < table[r].length; c++) {
-                System.out.print("|" + colorNameChar(table[r][c]) + " ");
-            }
+            for (int c = 0; c < table[r].length; c++) System.out.print("|" + colorNameChar(table[r][c]) + " ");
             System.out.println("|");
             System.out.println(separator);
         }
@@ -278,6 +323,13 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
 
     private static String formatNumber(int n) {
         return n < 10 ? " " + n : Integer.toString(n);
+    }
+
+    static class Bet {
+        String type;   // "color" or "number"
+        String color;  // red, black, green (if color bet)
+        int number;    // 0–36 (if number bet)
+        double amount; // bet value
     }
 
     // ---------------- Wheel animation methods ----------------
@@ -346,24 +398,24 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
         }
     }
 
-    private static void renderFrameWithoutPocket(char[][] base, int[] px, int[] py, int pockets, int hideIndex) {
-        int h = base.length, w = base[0].length;
-        int[][] pocketAt = new int[h][w];
-        for (int y = 0; y < h; y++) for (int x = 0; x < w; x++) pocketAt[y][x] = -1;
-        for (int i = 0; i < pockets; i++) if (i != hideIndex) pocketAt[py[i]][px[i]] = i;
-
-        for (int y = 0; y < h; y++) {
-            StringBuilder row = new StringBuilder();
-            for (int x = 0; x < w; ) {
-                if (x <= w - 2 && pocketAt[y][x] != -1) {
-                    int idx = pocketAt[y][x];
-                    String num = formatNumber(NUMBERS[idx]);
-                    String color = pocketColorCode(COLOR[idx]);
-                    row.append(color).append(WHITE).append(num).append(RESET);
-                    x += 2;
-                } else { row.append(base[y][x]); x++; }
-            }
-            System.out.println(row.toString());
+   private static void renderFrameWithoutPocket(char[][] base, int[] px, int[] py, int pockets, int hideIndex) {
+	int h = base.length, w = base[0].length;
+	int[][] pocketAt = new int[h][w];
+	for (int y = 0; y < h; y++) for (int x = 0; x < w; x++) pocketAt[y][x] = -1;
+	for (int i = 0; i < pockets; i++) if (i != hideIndex) pocketAt[py[i]][px[i]] = i;
+	for (int y = 0; y < h; y++) {
+        StringBuilder row = new StringBuilder();
+        for (int x = 0; x < w; ) {
+            if (x <= w - 2 && pocketAt[y][x] != -1) {
+                int idx = pocketAt[y][x];
+                String num = formatNumber(NUMBERS[idx]);
+                String color = pocketColorCode(COLOR[idx]);
+                row.append(color).append(WHITE).append(num).append(RESET);
+                x += 2;
+            } else { row.append(base[y][x]); x++; }
         }
+        System.out.println(row.toString());
     }
 }
+}
+
