@@ -72,7 +72,7 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
                 System.out.printf("Total Bet: PHP%.2f\n", totalBet);
                 System.out.print("Enter bet: ");
 
-                String input = scanner.nextLine().trim().toLowerCase();
+                String input = scanner.nextLine().trim();
                 System.out.println();
 
                 if (input.equals("done")) {
@@ -109,7 +109,7 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
                 b.amount = amount;
 
                 // NUMBER BET
-                if (type.equals("number")) {
+                if (type.equalsIgnoreCase("number")) {
                     try {
                         int num = Integer.parseInt(choice);
                         if (num < 0 || num > 36) {
@@ -124,14 +124,15 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
                     }
                 }
                 // COLOR BET
-                else if (type.equals("color")) {
-                    if (!choice.equals("red") && !choice.equals("black") && !choice.equals("green")) {
+                else if (type.equalsIgnoreCase("color")) {
+                    if (!choice.equalsIgnoreCase("red") && !choice.equalsIgnoreCase("black") && !choice.equalsIgnoreCase("green")) {
                         System.out.println("Invalid color.\n");
                         continue;
-                    }
-                    b.type = "color";
-                    b.color = choice;
                 }
+                b.type = "color";
+                b.color = choice.toLowerCase(); // <--- normalize to lowercase
+}
+
                 else {
                     System.out.println("Invalid bet type.\n");
                     continue;
@@ -237,6 +238,7 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
                         System.out.printf(RED_BG + WHITE + "LOSE (Color %s)\n" + RESET, b.color);
                     }
                 }
+
             }
 
             balance += winnings;
