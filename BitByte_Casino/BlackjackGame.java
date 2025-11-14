@@ -53,7 +53,11 @@ class BlackjackGame extends BitByteCasinoGame {
     }
 
     private void printHand(String owner, java.util.List<String> hand, boolean showHidden) {
-        System.out.println(owner + " hand: " + String.join("  ", hand) + " (Total: " + calculateTotal(hand) + ")");
+        if (showHidden && owner.equals("Dealer's")) {
+            System.out.println(owner + " hand: " + hand.get(0) + " [Hidden]");
+        } else {
+            System.out.println(owner + " hand: " + String.join("  ", hand) + " (Total: " + calculateTotal(hand) + ")");
+        }
 
         // Print ASCII art
         String[] lines = new String[5];
@@ -61,7 +65,7 @@ class BlackjackGame extends BitByteCasinoGame {
 
         for (String card : hand) {
             String ascii;
-            if (showHidden && card.equals(hand.get(0))) {
+            if (showHidden && !card.equals(hand.get(0))) {
                 ascii = getHiddenCardAscii();
             } else {
                 ascii = getCardAscii(card);
