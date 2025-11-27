@@ -400,7 +400,7 @@ public class BlackRedRouletteGame extends BitByteCasinoGame {
         }
     }
 
-   private static void renderFrameWithoutPocket(char[][] base, int[] px, int[] py, int pockets, int hideIndex) {
+private static void renderFrameWithoutPocket(char[][] base, int[] px, int[] py, int pockets, int hideIndex) {
 	int h = base.length, w = base[0].length;
 	int[][] pocketAt = new int[h][w];
 	for (int y = 0; y < h; y++) for (int x = 0; x < w; x++) pocketAt[y][x] = -1;
