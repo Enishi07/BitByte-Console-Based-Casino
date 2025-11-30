@@ -18,6 +18,14 @@ public class BitByteCasino {
         }
     }
     public static void main(String[] args) {
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "chcp 65001").inheritIO().start().waitFor();
+            }
+        } catch (Exception ex) {
+            // Ignore if setting codepage fails
+        }
+
         Scanner sc = new Scanner(System.in);
         double balance = 1000.0;
         int choice;
