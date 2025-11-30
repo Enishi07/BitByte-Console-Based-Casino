@@ -29,6 +29,8 @@ public class CrazyTimeGame extends BitByteCasinoGame {
         'G', 'Y', 'R', 'B', 'G', 'U', 'R', 'Y', 'G', 'B', 'R', 'G', 'M', 'B', 'G', 'R', 'Y', 'G', 'C', 'R', 'G', 'B', 'Y', 'G', 'R', 'R', 'G', 'B', 'G', 'Y', 'R', 'G', 'B', 'Y', 'G', 'R', 'B', 'G', 'Y', 'R', 'G', 'B', 'Y', 'G', 'R', 'B', 'G', 'Y', 'R', 'G', 'B', 'Y', 'G', 'R'
     };
 
+    private static final String[] BET_OPTIONS = {"1", "2", "5", "10", "CoinFlip", "CashHunt", "Pachinko", "CrazyTime"};
+
     private static final int WIDTH = 69;
     private static final int HEIGHT = 25;
 
@@ -61,9 +63,20 @@ public class CrazyTimeGame extends BitByteCasinoGame {
                 System.out.println("Invalid bet!");
                 return balance;
             }
-            System.out.println("Bet on: 1, 2, 5, 10, CoinFlip, CashHunt, Pachinko, or CrazyTime");
-            System.out.print("Your choice: ");
-            String betOn = sc.nextLine().trim();
+            int betChoice;
+            do {
+                System.out.println("Choose your bet:");
+                for (int i = 0; i < BET_OPTIONS.length; i++) {
+                    System.out.println((i + 1) + ". " + BET_OPTIONS[i]);
+                }
+                System.out.print("Enter your choice (1-" + BET_OPTIONS.length + "): ");
+                betChoice = sc.nextInt();
+                sc.nextLine(); // consume newline
+                if (betChoice < 1 || betChoice > BET_OPTIONS.length) {
+                    System.out.println("Invalid choice! Please choose 1-" + BET_OPTIONS.length + ".");
+                }
+            } while (betChoice < 1 || betChoice > BET_OPTIONS.length);
+            String betOn = BET_OPTIONS[betChoice - 1];
 
             // Top Slot: random segment and multiplier 1-10
             String topSlot = wheel.get(rand.nextInt(wheel.size()));
@@ -78,6 +91,7 @@ public class CrazyTimeGame extends BitByteCasinoGame {
             double radiusX = WIDTH * 0.38;
             double radiusY = HEIGHT * 0.38;
 
+         
             int pockets = SEGMENTS.length;
             int[] px = new int[pockets];
             int[] py = new int[pockets];
