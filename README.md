@@ -1,203 +1,191 @@
 <div align="center">
 
-# BitByte Casino
-A Console-Based Casino Game Simulation
+# 🎰 **BitByte Casino**  
+### A Console-Based Casino Game Simulation
 
-<b>IT-2108:</b><br>
-Collamar, Alexander Joshua D.<br>
-Dela Paz, Jaren Ken Gabriel R.<br>
-Matira, Carl Andrei A.<br>
+**IT-2108:**  
+Collamar, Alexander Joshua D.  
+Dela Paz, Jaren Ken Gabriel R.  
+Matira, Carl Andrei A.  
 </div>
 
 <p align="center">
-  <a href="#-overview">
-    <img src="https://img.shields.io/badge/📖_Overview-6b4f29?style=for-the-badge">
-  </a>
-  <a href="#-key-features">
-    <img src="https://img.shields.io/badge/⭐_Features-8c6931?style=for-the-badge">
-  </a>
-  <a href="#-oop-concepts-applied">
-    <img src="https://img.shields.io/badge/🏗️_OOP_Concepts_Applied-b8863b?style=for-the-badge">
-  </a>
-  <a href="#-program-structure">
-    <img src="https://img.shields.io/badge/📁_Program_Structure-d4a15f?style=for-the-badge">
-  </a>
-  <a href="#-how-to-run">
-    <img src="https://img.shields.io/badge/🚀_How_to_Run-e3b679?style=for-the-badge">
-  </a>
-  <a href="#-sample-output">
-    <img src="https://img.shields.io/badge/📜_Sample_Output-efcb9f?style=for-the-badge">
-  </a>
-  <a href="#-author--acknowledgement">
-    <img src="https://img.shields.io/badge/👤_Author_Acknowledgement-f7e4c5?style=for-the-badge">
-  </a>
+  <a href="#-overview"><img src="https://img.shields.io/badge/📖_Overview-6b4f29?style=for-the-badge"></a>
+  <a href="#-key-features"><img src="https://img.shields.io/badge/⭐_Features-8c6931?style=for-the-badge"></a>
+  <a href="#-oop-concepts-applied"><img src="https://img.shields.io/badge/🏗️_OOP_Concepts-b8863b?style=for-the-badge"></a>
+  <a href="#-program-structure"><img src="https://img.shields.io/badge/📁_Program_Structure-d4a15f?style=for-the-badge"></a>
+  <a href="#-how-to-run"><img src="https://img.shields.io/badge/🚀_How_to_Run-e3b679?style=for-the-badge"></a>
+  <a href="#-sample-output"><img src="https://img.shields.io/badge/📜_Sample_Output-efcb9f?style=for-the-badge"></a>
+  <a href="#-author--acknowledgement"><img src="https://img.shields.io/badge/👤_Author_Acknowledgement-f7e4c5?style=for-the-badge"></a>
 </p>
 
+---
 
---------------------------------------------------------------------------------------------------------      
+## 📖 **Overview**
 
-## 📖 Overview
-BitByte Casino is a comprehensive Java-based console application simulating various casino games, designed as an alternative to real-life gambling. It provides simulations of popular casino games to test your luck, complete with interactive tutorials, a balance management system, and engaging ASCII art animations.
+BitByte Casino is a Java-based console simulation featuring six casino games, designed as an educational alternative to real gambling. It includes animated ASCII art, tutorials, a balance system, and interactive gameplay.
 
-6 playable games with unique mechanics (Dice Roll, Blackjack, Slot Machine, Color Game, Crazy Time, Roulette)
-Turn-based gameplay with balance management and risk assessment
-Tutorial system for learning game rules
-Progressive betting system with starting balance of PHP 1000
-Animated introductions and game logos with typing effects
+### **Highlights**
+- 🎮 Six games: Dice Roll, Blackjack, Slot Machine, Color Game, Crazy Time, Roulette  
+- 💰 Balance management with PHP 1000 starting amount  
+- 📘 Interactive tutorials  
+- 🖥️ Animated text + ASCII logos  
+- ⚠️ Responsible gambling reminders  
 
--------------------------------------------------------------------------------------------------------- 
+---
 
-## 🎯 Key Features
-Games Available
-Game	Description	Bet Range	Win Conditions
-Dice Roll	Bet on dice outcomes (high/low, exact numbers)	PHP 50-500	Correct predictions on dice rolls
-Blackjack	Classic card game against dealer	PHP 100-1000	Beat dealer without busting (21 or under)
-Slot Machine	Spin reels for matching symbols	PHP 10-200	Matching symbols on paylines
-Color Game	Bet on color outcomes (Red/Black)	PHP 20-300	Correct color prediction
-Crazy Time	Spin wheel with multipliers	PHP 50-1000	Landing on winning segments
-Roulette	Bet on numbers, colors, or ranges	PHP 25-500	Correct number/color/range prediction
-Gameplay Mechanics
-Balance Management: Starting balance of PHP 1000, bets deducted and winnings added
-Tutorial System: Optional tutorials for each game before playing
-Animated UI: Typing effects for text, ASCII art logos, clear screen transitions
-Risk Warnings: Introductory messages about responsible gambling
-Exit Conditions: Game ends when balance reaches zero or player chooses to exit
-Inventory System (Balance)
-Capacity: Unlimited (virtual currency)
-Currency: Philippine Peso (PHP)
-Effects: Betting, winnings, loss prevention
+## 🎯 **Key Features**
 
--------------------------------------------------------------------------------------------------------- 
+### **Games Available**
+| Game | Description | Bet Range | Win Condition |
+|------|-------------|-----------|----------------|
+| 🎲 **Dice Roll** | Predict dice outcomes | PHP 50–500 | Correct prediction |
+| 🂡 **Blackjack** | Battle the dealer to 21 | PHP 100–1000 | Beat dealer |
+| 🎰 **Slot Machine** | Spin reels for symbol matches | PHP 10–200 | Matching symbols |
+| 🟥 **Color Game** | Bet on red/black | PHP 20–300 | Correct color |
+| 🎡 **Crazy Time** | Spin wheel with multipliers | PHP 50–1000 | Winning segment |
+| 🎯 **Roulette** | Bet on numbers or colors | PHP 25–500 | Correct outcome |
 
-## 🏗️ OOP Concepts Applied
-1. Inheritance
-BitByteCasinoGame (abstract) → 6 concrete game classes (DiceGame, BlackjackGame, SlotMachineGame, ColorGame, CrazyTimeGame, BlackRedRouletteGame)
-Abstract methods implemented uniquely per game: play() method for game logic
+### **Gameplay Mechanics**
+- Balance system  
+- Interactive tutorials  
+- Typing animations  
+- Responsible-play warnings  
+- Skippable guides  
+- Clear-screen effects  
 
-2. Polymorphism
-Abstract play() method overridden in each game class for specific implementations
-Runtime resolution selects concrete game logic based on user choice
+---
 
-3. Encapsulation
-Protected fields in BitByteCasinoGame (Scanner, Random) for shared utilities
-Private game-specific variables in each game class
-Static methods for clear screen and utility functions
+## 🏗️ **OOP Concepts Applied**
 
-4. Abstraction
-Abstract BitByteCasinoGame class hides implementation while defining play() interface
-Game selection operates through abstract type, not concrete classes
-Complex game logic hidden behind simple play() method calls
+### **1️⃣ Inheritance**
+`BitByteCasinoGame` → six concrete game classes  
+Each game overrides `play()`.
 
-5. Composition
-BitByteCasino contains instances of all game classes
-Tutorial system composed of separate Tutorial class with static methods
-Main menu combines game instances and user input handling
+### **2️⃣ Polymorphism**
+Menu chooses which `play()` method executes at runtime.
 
--------------------------------------------------------------------------------------------------------- 
+### **3️⃣ Encapsulation**
+Shared tools protected; game-specific values private.
 
-## 📁 Program Structure
+### **4️⃣ Abstraction**
+Game logic hidden behind the abstract base.
+
+### **5️⃣ Composition**
+Main class holds instances of all game objects.
+
+---
+
+## 📁 **Program Structure**
+
+```
 
 BitByte_Casino/
-├── BitByteCasino.java                          # Application entry point, main menu, intro animations
-├── BitByteCasinoGame.java                      # Abstract base class for all games
-├── DiceGame.java                               # Dice Roll game implementation
-├── BlackjackGame.java                          # Blackjack game implementation
-├── SlotMachineGame.java                        # Slot Machine game implementation
-├── ColorGame.java                              # Color Game implementation
-├── CrazyTimeGame.java                          # Crazy Time game implementation
-├── BlackRedRouletteGame.java                   # Roulette game implementation
+├── BitByteCasino.java               # Main program, menu, intro
+├── BitByteCasinoGame.java           # Abstract game base
+├── DiceGame.java                    # Dice Roll
+├── BlackjackGame.java               # Blackjack
+├── SlotMachineGame.java             # Slot Machine
+├── ColorGame.java                   # Color Game
+├── CrazyTimeGame.java               # Crazy Time
+├── BlackRedRouletteGame.java        # Roulette
 ├── Tutorial/
-│   └── Tutorial.java                           # Tutorial methods for all games
-├── compile.bat                                 # Windows compilation script
-├── run.bat                                     # Windows execution script
-└── clean.bat                                   # Cleanup script
+│   └── Tutorial.java                # Tutorial system
+├── compile.bat                      # Compile script
+├── run.bat                          # Run script
+└── clean.bat                        # Cleanup
 
--------------------------------------------------------------------------------------------------------- 
+````
 
-## 🚀 How to Run
-Prerequisites
-Java Development Kit (JDK) 11 or later
-Windows Command Prompt or compatible terminal
-~10MB disk space for compiled bytecode
-Compilation
-# Navigate to project root
+---
+
+## 🚀 **How to Run**
+
+### **Prerequisites**
+- ☕ JDK 11+  
+- 🪟 Windows CMD / terminal  
+- 💾 10MB disk space  
+
+### **Compilation**
+```sh
 cd /path/to/BitByte-Console-Based-Casino
-
-# Compile all Java files
 javac BitByte_Casino/*.java BitByte_Casino/Tutorial/*.java
+````
 
-# Or use the provided batch file on Windows
+Or simply:
+
+```
 compile.bat
-Execution
-# Run the game
+```
+
+### **Execution**
+
+```sh
 java -cp . BitByte_Casino.BitByteCasino
+```
 
-# Or use the provided batch file on Windows
+Or:
+
+```
 run.bat
-Quick Start (One Command)
+```
+
+### **One-Line Quick Start**
+
+```sh
 cd /path/to/BitByte-Console-Based-Casino && javac BitByte_Casino/*.java BitByte_Casino/Tutorial/*.java && java -cp . BitByte_Casino.BitByteCasino
-Rebuild After Modifications
-javac BitByte_Casino/*.java BitByte_Casino/Tutorial/*.java
+```
 
--------------------------------------------------------------------------------------------------------- 
+---
 
-## 🎮 Gameplay Guide
-Starting the Game
-Run java -cp . BitByte_Casino.BitByteCasino
-View animated producer text and gambling warnings
-Choose: Select game (1-6) or Exit (7)
-Game Selection
-Enter your choice (1-7)
-Optional tutorial for selected game
-View game-specific ASCII logo animation
-Choose to start playing or return to menu
-Betting System
-Each game prompts for bet amount within specified range
-Balance updated after each round
-Game ends if balance reaches zero
-Tutorials
-Available for each game before playing
-Explains rules, betting, and winning conditions
-Can be skipped by entering 'n'
-Responsible Gambling
-Introductory messages emphasize gambling risks
-"The House Always Wins" reminder
-Encourages responsible play
+## 🎮 **Gameplay Guide**
 
--------------------------------------------------------------------------------------------------------- 
+### **Game Flow**
 
-## 📊 Example Gameplay Scenario
-Starting BitByte Casino
-    └─ Player begins with PHP 1000 balance
+1. Launch application
+2. View intro animations
+3. Choose game (1–6)
+4. Optional tutorial
+5. ASCII logo appears
+6. Enter bet
+7. Play rounds until exit or 0 balance
 
-Round 1: Dice Roll Game
-    Player selects Dice Roll (option 1)
-    Views tutorial (optional)
-    Sees animated dice logo
-    
-    Player bets PHP 100 on "High" (7-12)
-    Dice rolls: 8 (win!)
-    
-    Balance: PHP 1100 (+PHP 100 winnings)
-    
-Round 2: Blackjack Game
-    [Player switches to Blackjack, bets PHP 200...]
-    Player hits 21 (Blackjack!)
-    Balance: PHP 1300 (+PHP 300 winnings)
-    
-Round 3: Slot Machine
-    [Spins reels, gets partial match...]
-    Balance: PHP 1250 (-PHP 50 loss)
-    
-Balance Management: Player continues until balance depletes or chooses to exit
+> **Tip:** Tutorials explain rules, odds, and examples.
 
--------------------------------------------------------------------------------------------------------- 
+---
 
-## 🎬 Sample Output
-Main Menu
-==============================================================================================================================================================
+## 📊 **Example Gameplay Scenario**
+
+### **Starting Balance: PHP 1000**
+
+#### **Round 1 — Dice Roll**
+
+* Bet PHP 100
+* Roll: 8 → **Win**
+* New Balance: PHP 1100
+
+#### **Round 2 — Blackjack**
+
+* Bet PHP 200
+* Player hits **21** → Blackjack
+* New Balance: PHP 1300
+
+#### **Round 3 — Slot Machine**
+
+* Partial match
+* New Balance: PHP 1250
+
+---
+
+## 🎬 **Sample Output**
+
+<details>
+<summary>📂 Click to Expand Sample Output</summary>
+
+```
+===================================================================================================================
             Balance: PHP1000.00
-==============================================================================================================================================================
+===================================================================================================================
             Choose a game:
             1.  Dice Roll
             2.  Blackjack
@@ -206,9 +194,13 @@ Main Menu
             5.  Crazy Time
             6.  Roulette
             7.  Exit
---------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
 Enter your choice: 
-Game Logo Animation
+```
+
+### **Centered ASCII Game Logo**
+
+```
       ::::::::: ::::::::::: ::::::::::: :::::::::  :::   ::: ::::::::::: ::::::::::          ::::::::      :::      :::::::: ::::::::::: ::::    :::  ::::::::
      :+:    :+:    :+:         :+:     :+:    :+: :+:   :+:     :+:     :+:                :+:    :+:   :+: :+:   :+:    :+:    :+:     :+:+:   :+: :+:    :+:
     +:+    +:+    +:+         +:+     +:+    +:+  +:+ +:+      +:+     +:+                +:+         +:+   +:+  +:+           +:+     :+:+:+  +:+ +:+    +:+
@@ -216,51 +208,47 @@ Game Logo Animation
   +#+    +#+    +#+         +#+     +#+    +#+    +#+        +#+     +#+                +#+        +#+     +#+        +#+    +#+     +#+  +#+#+# +#+    +#+
  #+#    #+#    #+#         #+#     #+#    #+#    #+#        #+#     #+#                #+#    #+# #+#     #+# #+#    #+#    #+#     #+#   #+#+# #+#    #+#
 ######### ###########     ###     #########     ###        ###     ##########          ########  ###     ###  ######## ########### ###    ####  #########
+       
+```
 
-Tutorial Prompt
-Would you like to view the tutorial for Dice Roll? (y/n): 
-
--------------------------------------------------------------------------------------------------------- 
-
-## 👤 Author & Acknowledgement
-
-### Development
-Developed as a comprehensive Java educational project demonstrating OOP principles, design patterns, and game architecture.
-
-### Information Table
-
-| | Name | Role |
-|----------|----------|----------|
-| Collamar, Alexander Joshua D. | Lead Developer 1    |
-| Dela Paz, Jaren Ken Gabriel R. | Lead Developer 2    |
-| Matira, Carl Andrei A. |  UI Designer / Tester    |
+</details>
 
 ---
 
-## 📞 Support & Contribution
+## 👤 **Author & Acknowledgement**
 
-For bug reports, feature requests, or contributions, refer to the project repository on GitHub. 
+### **Development Team**
 
----
-
-## 🙏 Acknowledgements
-
-### Special Thanks to Our Instructors
-- **Ma'am Fatima** - For providing comprehensive lessons, templates, and resources shared through her Discord.
-- **Sir Emmanuel** - For his dedicated lessons and continuous effort in teaching us whenever possible. His support and expertise greatly contributed to our understanding and development
-
-### Learning Resources & Inspiration
-- **YouTube Channels**: 
-  - Bro Code - For comprehensive Java tutorials and best practices
-  - Coding with Mosh - For clear programming concepts and design patterns
-  - Other Indian Coding Tutorials - For diverse perspectives and innovative solutions
-- **Stack Overflow** - For community support and solving countless technical challenges
-- **Open-Source Community** - For shared knowledge and programming resources
-
-### Personal Support
-- **Our Parents** - For their unwavering support, encouragement, and belief in this project. This wouldn't have been possible without their sacrifices and dedication
-- **Our Peers & Friends** - For playtesting, constructive feedback, and motivation throughout development
+| Name                               | Role                 |
+| ---------------------------------- | -------------------- |
+| **Collamar, Alexander Joshua D.**  | Lead Developer 1     |
+| **Dela Paz, Jaren Ken Gabriel R.** | Lead Developer 2     |
+| **Matira, Carl Andrei A.**         | UI Designer / Tester |
 
 ---
 
-**Enjoy and learn how to gamble responsively with Bitbyte Casino!** 🃏🎰🎲
+## 🙏 **Acknowledgements**
+
+### **Special Thanks**
+
+* **Ma'am Fatima** – Lesson materials & templates
+* **Sir Emmanuel** – Dedicated teaching support
+
+### **Learning Resources**
+
+* *Bro Code*
+* *Mosh Hamedani*
+* Indian Java tutorials
+* Stack Overflow
+* Open-source references
+
+### **Personal Support**
+
+* Parents
+* Friends & classmates
+
+---
+
+**🎰 Enjoy and learn how to gamble responsibly with BitByte Casino! 🎲🃏**
+
+
