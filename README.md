@@ -73,17 +73,21 @@ Effects: Betting, winnings, loss prevention
 1. Inheritance
 BitByteCasinoGame (abstract) → 6 concrete game classes (DiceGame, BlackjackGame, SlotMachineGame, ColorGame, CrazyTimeGame, BlackRedRouletteGame)
 Abstract methods implemented uniquely per game: play() method for game logic
+
 2. Polymorphism
 Abstract play() method overridden in each game class for specific implementations
 Runtime resolution selects concrete game logic based on user choice
+
 3. Encapsulation
 Protected fields in BitByteCasinoGame (Scanner, Random) for shared utilities
 Private game-specific variables in each game class
 Static methods for clear screen and utility functions
+
 4. Abstraction
 Abstract BitByteCasinoGame class hides implementation while defining play() interface
 Game selection operates through abstract type, not concrete classes
 Complex game logic hidden behind simple play() method calls
+
 5. Composition
 BitByteCasino contains instances of all game classes
 Tutorial system composed of separate Tutorial class with static methods
@@ -92,6 +96,7 @@ Main menu combines game instances and user input handling
 -------------------------------------------------------------------------------------------------------- 
 
 ## 📁 Program Structure
+
 BitByte_Casino/
 ├── BitByteCasino.java                          # Application entry point, main menu, intro animations
 ├── BitByteCasinoGame.java                      # Abstract base class for all games
@@ -226,9 +231,9 @@ Developed as a comprehensive Java educational project demonstrating OOP principl
 
 | | Name | Role |
 |----------|----------|----------|
-| <img src="images/wyn.jpg" width="120">| Aguho, Alwynn L. | Lead Developer 1    |
-|<img src="images/red.jpg" width="120">| Jamilano, John Red S. | Lead Developer 2    |
-|<img src="images/nhel.jpg" width="120">| Cortuna, Nhel Edward B. |  UI Designer / Tester    |
+| Collamar, Alexander Joshua D. | Lead Developer 1    |
+| Dela Paz, Jaren Ken Gabriel R. | Lead Developer 2    |
+| Matira, Carl Andrei A. |  UI Designer / Tester    |
 
 ---
 
