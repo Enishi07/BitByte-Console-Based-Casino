@@ -40,7 +40,7 @@ BitByte Casino is a Java-based console simulation featuring six casino games, de
 | Game | Description | Bet Range | Win Condition |
 |------|-------------|-----------|----------------|
 | 🎲 **Dice Roll** | Predict dice outcomes | PHP 50–500 | Correct prediction |
-| 🂡 **Blackjack** | Battle the dealer to 21 | PHP 100–1000 | Beat dealer |
+|  🂡 **Blackjack** | Battle the dealer to 21 | PHP 100–1000 | Beat dealer |
 | 🎰 **Slot Machine** | Spin reels for symbol matches | PHP 10–200 | Matching symbols |
 | 🟥 **Color Game** | Bet on red/black | PHP 20–300 | Correct color |
 | 🎡 **Crazy Time** | Spin wheel with multipliers | PHP 50–1000 | Winning segment |
@@ -227,25 +227,24 @@ Enter your choice:
 
 ---
 
-## 🙏 **Acknowledgements**
+## 🙏 Acknowledgements
 
-### **Special Thanks**
+### Special Thanks to Our Instructors
+- **Ma'am Fatima** - For providing comprehensive lessons, templates, and resources shared through her Discord community server.
+- **Sir Emmanuel** - For his dedicated lessons and continuous effort in teaching us whenever possible. His support and expertise greatly contributed to our understanding and development
 
-* **Ma'am Fatima** – Lesson materials & templates
-* **Sir Emmanuel** – Dedicated teaching support
+### Learning Resources & Inspiration
+- **YouTube Channels**: 
+  - Bro Code - For comprehensive Java tutorials and best practices
+  - Coding with Mosh - For clear programming concepts and design patterns
+  - Other Indian Coding Tutorials - For diverse perspectives and innovative solutions
+- **Open-Source**:
+  - **Stack Overflow** - For community support and solving countless technical challenges
+  - **Open-Source Community** - For shared knowledge and programming resources
 
-### **Learning Resources**
-
-* *Bro Code*
-* *Mosh Hamedani*
-* Indian Java tutorials
-* Stack Overflow
-* Open-source references
-
-### **Personal Support**
-
-* Parents
-* Friends & classmates
+### Personal Support
+- **Our Parents** - For their unwavering support, encouragement, and belief in this project. This wouldn't have been possible without their sacrifices and dedication
+- **Our Peers & Friends** - For playtesting, constructive feedback, and motivation throughout development
 
 ---
 
