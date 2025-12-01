@@ -10,14 +10,15 @@ Matira, Carl Andrei A.
 </div>
 
 <p align="center">
-  <a href="#-overview"><img src="https://img.shields.io/badge/📖_Overview-6b4f29?style=for-the-badge"></a>
-  <a href="#-key-features"><img src="https://img.shields.io/badge/⭐_Features-8c6931?style=for-the-badge"></a>
-  <a href="#oop-concepts-applied"><img src="https://img.shields.io/badge/🏗️_OOP_Concepts-b8863b?style=for-the-badge"></a>
-  <a href="#-program-structure"><img src="https://img.shields.io/badge/📁_Program_Structure-d4a15f?style=for-the-badge"></a>
-  <a href="#-how-to-run"><img src="https://img.shields.io/badge/🚀_How_to_Run-e3b679?style=for-the-badge"></a>
-  <a href="#-sample-output"><img src="https://img.shields.io/badge/📜_Sample_Output-efcb9f?style=for-the-badge"></a>
-  <a href="#-author--acknowledgement"><img src="https://img.shields.io/badge/👤_Author_Acknowledgement-f7e4c5?style=for-the-badge"></a>
+  <a href="#-overview"><img src="https://img.shields.io/badge/📖_Overview-D4AF37?style=for-the-badge"></a>
+  <a href="#-key-features"><img src="https://img.shields.io/badge/⭐_Features-B8860B?style=for-the-badge"></a>
+  <a href="#-oop-concepts-applied"><img src="https://img.shields.io/badge/🏗️_OOP_Concepts-8B0000?style=for-the-badge"></a>
+  <a href="#-program-structure"><img src="https://img.shields.io/badge/📁_Program_Structure-0B6623?style=for-the-badge"></a>
+  <a href="#-how-to-run"><img src="https://img.shields.io/badge/🚀_How_to_Run-4B0082?style=for-the-badge"></a>
+  <a href="#-sample-output"><img src="https://img.shields.io/badge/📜_Sample_Output-0A0A0A?style=for-the-badge&logoColor=white"></a>
+  <a href="#-author--acknowledgement"><img src="https://img.shields.io/badge/👤_Author_Acknowledgement-D4AF37?style=for-the-badge"></a>
 </p>
+
 
 ---
 
